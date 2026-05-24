@@ -1,0 +1,2989 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="MODERN CULTURE — Contemporary luxury fashion. Editorial design, considered craftsmanship." />
+<meta name="theme-color" content="#0a0a0a" />
+<title>MODERN CULTURE · Contemporary Luxury Fashion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MODERN CULTURE — Design System
+   ============================================================ */
+:root{
+  --bg:#fafaf9;
+  --bg-elev:#ffffff;
+  --ink:#0a0a0a;
+  --ink-soft:#3a3a38;
+  --muted:#8b8b85;
+  --line:#e8e6e1;
+  --line-strong:#cfccc4;
+  --accent:#0a0a0a;
+  --gold:#a88b4a;
+  --sale:#b1442a;
+  --ok:#3a6a3a;
+  --bg-overlay: rgba(250,250,249,.85);
+  --shadow: 0 1px 0 rgba(0,0,0,.04), 0 20px 40px -24px rgba(0,0,0,.18);
+  --serif: 'Playfair Display', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --t-fast: .18s;
+  --t-base: .35s;
+  --t-slow: .8s;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+html[data-theme="dark"]{
+  --bg:#0a0a0a;
+  --bg-elev:#141414;
+  --ink:#f5f3ee;
+  --ink-soft:#c8c6c0;
+  --muted:#7a7a73;
+  --line:#222220;
+  --line-strong:#33332f;
+  --accent:#f5f3ee;
+  --bg-overlay: rgba(10,10,10,.85);
+  --shadow: 0 1px 0 rgba(255,255,255,.03), 0 20px 40px -24px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;transition:opacity var(--t-fast)}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.serif{font-family:var(--serif)}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.container{max-width:1440px;margin:0 auto;padding:0 32px}
+@media(max-width:720px){.container{padding:0 20px}}
+
+/* ============================================================
+   Top announcement bar
+   ============================================================ */
+.announcebar{
+  background:var(--ink);
+  color:var(--bg);
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:9px 16px;
+  font-weight:500;
+}
+.announcebar span{display:inline-block;animation:slidefade 8s infinite}
+@keyframes slidefade{
+  0%,30%{opacity:1;transform:translateY(0)}
+  35%,65%{opacity:0;transform:translateY(-8px)}
+  70%,100%{opacity:1;transform:translateY(0)}
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+header.nav{
+  position:sticky;top:0;z-index:80;
+  background:var(--bg-overlay);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  transition: all var(--t-base) var(--ease);
+}
+.nav-inner{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  height:68px;
+  gap:24px;
+}
+.nav-left, .nav-right{display:flex;align-items:center;gap:24px}
+.nav-right{justify-content:flex-end}
+.nav-cats{display:flex;gap:28px}
+.nav-cats a{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  position:relative;padding:6px 0;
+}
+.nav-cats a::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;
+  height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--t-base) var(--ease);
+}
+.nav-cats a:hover::after, .nav-cats a.active::after{transform:scaleX(1)}
+.nav-cats a.sale{color:var(--sale)}
+.logo{
+  font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.05em;
+  cursor:pointer;white-space:nowrap;
+}
+.logo small{font-size:10px;letter-spacing:.32em;display:block;text-align:center;
+  font-family:var(--sans);font-weight:500;color:var(--muted);margin-top:-2px}
+.icon-btn{
+  width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:background var(--t-fast);position:relative;
+}
+.icon-btn:hover{background:var(--line)}
+.icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.cart-count{
+  position:absolute;top:4px;right:4px;background:var(--ink);color:var(--bg);
+  font-size:9px;font-weight:600;min-width:16px;height:16px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;padding:0 4px;
+}
+.mobile-toggle{display:none}
+
+@media(max-width:980px){
+  .nav-cats{display:none}
+  .mobile-toggle{display:inline-flex}
+  .nav-inner{grid-template-columns:auto 1fr auto;height:60px}
+  .logo{justify-self:center}
+}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;inset:0;background:var(--bg);z-index:90;
+  transform:translateX(-100%);transition:transform var(--t-base) var(--ease);
+  padding:80px 32px 32px;overflow-y:auto;
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{
+  display:block;font-family:var(--serif);font-size:32px;padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+.mobile-menu-close{position:absolute;top:20px;right:20px;font-size:24px;width:44px;height:44px}
+
+/* ============================================================
+   Hero — full-bleed editorial
+   ============================================================ */
+.hero{
+  position:relative;height:calc(100vh - 68px);min-height:620px;max-height:880px;
+  overflow:hidden;background:#1a1816;
+}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);
+  background-size:cover;background-position:center;
+}
+.hero-slide.active{opacity:1}
+.hero-slide::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.45) 100%);
+}
+.hero-content{
+  position:absolute;left:0;right:0;bottom:60px;z-index:2;color:#fff;
+  padding:0 48px;
+}
+.hero-content .eyebrow{color:rgba(255,255,255,.7)}
+.hero-content h1{
+  font-family:var(--serif);font-weight:400;font-size:clamp(48px, 7vw, 104px);
+  line-height:.95;letter-spacing:-.02em;margin:14px 0 24px;max-width:14ch;
+}
+.hero-content h1 em{font-style:italic;font-weight:300}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:12px;padding:16px 28px;
+  border:1px solid rgba(255,255,255,.7);color:#fff;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  transition:all var(--t-base) var(--ease);overflow:hidden;position:relative;
+}
+.hero-cta:hover{background:#fff;color:#0a0a0a}
+.hero-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.hero-dots{
+  position:absolute;bottom:36px;right:48px;z-index:3;display:flex;gap:10px;
+}
+.hero-dots button{
+  width:36px;height:2px;background:rgba(255,255,255,.35);transition:background var(--t-base);
+}
+.hero-dots button.active{background:#fff}
+.hero-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.4);
+  display:none;align-items:center;justify-content:center;color:#fff;
+  transition:all var(--t-fast);
+}
+.hero-nav:hover{background:rgba(255,255,255,.15);border-color:#fff}
+.hero-nav.prev{left:32px}.hero-nav.next{right:32px}
+@media(min-width:980px){.hero-nav{display:inline-flex}}
+@media(max-width:720px){.hero-content{padding:0 20px;bottom:36px}.hero-dots{right:20px;bottom:20px}}
+
+/* ============================================================
+   Section primitives
+   ============================================================ */
+section{padding:96px 0}
+@media(max-width:720px){section{padding:64px 0}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.section-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,56px);letter-spacing:-.01em;line-height:1.05}
+.section-head .link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px;font-weight:500}
+
+/* ============================================================
+   Category tiles
+   ============================================================ */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:880px){.cat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cat-grid{grid-template-columns:1fr}}
+.cat-tile{
+  position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--line);cursor:pointer;
+}
+.cat-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.cat-tile:hover img{transform:scale(1.05)}
+.cat-tile-label{
+  position:absolute;left:24px;bottom:24px;color:#fff;z-index:2;
+}
+.cat-tile-label .eyebrow{color:rgba(255,255,255,.7)}
+.cat-tile-label h3{font-family:var(--serif);font-size:36px;font-weight:400;margin-top:6px}
+.cat-tile::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.55) 100%);
+}
+
+/* ============================================================
+   Product grid
+   ============================================================ */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px}
+@media(max-width:1100px){.product-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:780px){.product-grid{grid-template-columns:repeat(2,1fr);gap:24px 14px}}
+.product-card{position:relative;cursor:pointer}
+.product-card .pc-image{
+  position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--line);margin-bottom:14px;
+}
+.product-card .pc-image img{
+  width:100%;height:100%;object-fit:cover;position:absolute;inset:0;
+  transition:opacity .5s var(--ease), transform 1.2s var(--ease);
+}
+.product-card .pc-image img.alt{opacity:0}
+.product-card:hover .pc-image img.main{opacity:0}
+.product-card:hover .pc-image img.alt{opacity:1;transform:scale(1.03)}
+.product-card .pc-badge{
+  position:absolute;top:12px;left:12px;z-index:2;background:var(--bg-elev);color:var(--ink);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:5px 8px;font-weight:600;
+}
+.product-card .pc-badge.sale{background:var(--sale);color:#fff}
+.product-card .pc-wishlist{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:36px;height:36px;border-radius:50%;background:var(--bg-overlay);
+  display:inline-flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(-4px);transition:all var(--t-base) var(--ease);
+}
+.product-card:hover .pc-wishlist{opacity:1;transform:translateY(0)}
+.product-card .pc-wishlist svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+.product-card .pc-wishlist.active svg{fill:var(--sale);stroke:var(--sale)}
+.product-card .pc-quick{
+  position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:var(--bg);
+  text-align:center;padding:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  transform:translateY(100%);transition:transform var(--t-base) var(--ease);font-weight:500;
+}
+.product-card:hover .pc-quick{transform:translateY(0)}
+.pc-name{font-size:13px;font-weight:500;margin-bottom:4px;letter-spacing:.01em}
+.pc-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:13px}
+.pc-price{color:var(--ink)}
+.pc-price.sale-price s{color:var(--muted);margin-right:6px;font-weight:400}
+.pc-price.sale-price strong{color:var(--sale);font-weight:600}
+.pc-sizes{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.06em}
+
+/* ============================================================
+   Editorial / Story split
+   ============================================================ */
+.editorial{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:880px){.editorial{grid-template-columns:1fr;gap:32px}}
+.editorial img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.editorial-text h2{font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin-bottom:24px}
+.editorial-text p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:28px;max-width:520px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;
+  background:var(--ink);color:var(--bg);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;font-weight:500;transition:opacity var(--t-base);
+}
+.btn:hover{opacity:.85}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+
+/* ============================================================
+   Marquee
+   ============================================================ */
+.marquee{
+  background:var(--ink);color:var(--bg);padding:24px 0;overflow:hidden;
+}
+.marquee-track{
+  display:flex;gap:80px;animation:marquee 28s linear infinite;white-space:nowrap;
+  font-family:var(--serif);font-size:32px;font-style:italic;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track span{display:inline-flex;align-items:center;gap:80px}
+.marquee-track .dot{display:inline-block;width:6px;height:6px;background:var(--bg);border-radius:50%}
+
+/* ============================================================
+   Newsletter
+   ============================================================ */
+.newsletter{background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.newsletter h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;margin-bottom:14px}
+.newsletter p{color:var(--ink-soft);max-width:520px;margin:0 auto 32px}
+.newsletter form{display:flex;max-width:480px;margin:0 auto;border-bottom:1px solid var(--ink)}
+.newsletter input{flex:1;background:transparent;border:0;padding:14px 4px;color:var(--ink);font-family:inherit;font-size:14px;outline:none}
+.newsletter button{padding:14px 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer{background:var(--bg);color:var(--ink);border-top:1px solid var(--line)}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:48px;padding:80px 0 48px;
+}
+@media(max-width:980px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand .logo{font-size:28px}
+.footer-brand p{margin-top:18px;color:var(--ink-soft);max-width:320px;font-size:14px;line-height:1.7}
+.footer-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:20px}
+.footer-col a{display:block;padding:6px 0;color:var(--ink-soft);font-size:13px;transition:color var(--t-fast)}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{
+  border-top:1px solid var(--line);padding:24px 0;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--muted);
+}
+.footer-bottom .socials{display:flex;gap:16px}
+.footer-bottom .socials a{width:36px;height:36px;border:1px solid var(--line-strong);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.footer-bottom .socials a:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.footer-bottom svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.payments{display:flex;gap:10px;align-items:center}
+.payments span{font-size:10px;letter-spacing:.16em;padding:6px 10px;border:1px solid var(--line-strong);border-radius:4px;font-weight:600}
+
+/* ============================================================
+   View routing — show one view at a time
+   ============================================================ */
+.view{display:none;animation:fadeIn .4s var(--ease)}
+.view.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   PLP (Product listing page)
+   ============================================================ */
+.plp-head{padding:48px 0 32px;border-bottom:1px solid var(--line)}
+.plp-head h1{font-family:var(--serif);font-size:clamp(40px,5vw,72px);font-weight:400;letter-spacing:-.01em}
+.plp-head .crumb{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.plp-head p{margin-top:10px;color:var(--ink-soft);max-width:560px}
+.plp-layout{display:grid;grid-template-columns:240px 1fr;gap:48px;padding:40px 0}
+@media(max-width:880px){.plp-layout{grid-template-columns:1fr;gap:0}}
+.filters h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:0 0 14px;cursor:pointer;display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.filter-group{margin-bottom:8px}
+.filter-options{padding:12px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-soft)}
+.filter-options label{display:flex;align-items:center;gap:10px;cursor:pointer}
+.filter-options input{accent-color:var(--ink)}
+.swatches{display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 18px}
+.sw{width:24px;height:24px;border-radius:50%;border:1px solid var(--line-strong);cursor:pointer;position:relative}
+.sw.active::after{content:'';position:absolute;inset:-4px;border:1px solid var(--ink);border-radius:50%}
+.plp-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.plp-toolbar .count{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sort{padding:10px 14px;border:1px solid var(--line-strong);background:transparent;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-family:inherit}
+
+/* ============================================================
+   PDP (Product detail page)
+   ============================================================ */
+.pdp-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding:40px 0 80px}
+@media(max-width:980px){.pdp-layout{grid-template-columns:1fr;gap:32px}}
+.pdp-gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:520px){.pdp-gallery{grid-template-columns:1fr}}
+.pdp-gallery .g-main{grid-column:1/-1}
+.pdp-gallery img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;cursor:zoom-in;
+  transition:transform .6s var(--ease);
+}
+.pdp-gallery .img-wrap{overflow:hidden;background:var(--line);position:relative}
+.pdp-gallery .img-wrap:hover img{transform:scale(1.05)}
+.pdp-info{position:sticky;top:88px;align-self:start}
+.pdp-info .crumb{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pdp-info h1{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:400;margin-bottom:10px;line-height:1.15}
+.pdp-info .price{font-size:18px;margin-bottom:8px}
+.pdp-info .stars{color:var(--gold);margin-bottom:24px;font-size:14px;letter-spacing:.08em}
+.pdp-info .stars small{color:var(--muted);margin-left:8px;letter-spacing:0}
+.pdp-info .desc{color:var(--ink-soft);line-height:1.7;margin-bottom:28px}
+.pdp-section{padding:18px 0;border-top:1px solid var(--line)}
+.pdp-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.size-row{display:flex;flex-wrap:wrap;gap:8px}
+.size-row button{
+  min-width:52px;padding:12px 14px;border:1px solid var(--line-strong);
+  font-size:13px;letter-spacing:.08em;font-weight:500;transition:all var(--t-fast);
+}
+.size-row button:hover:not(:disabled){border-color:var(--ink)}
+.size-row button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.size-row button:disabled{color:var(--muted);text-decoration:line-through;cursor:not-allowed}
+.pdp-actions{display:grid;grid-template-columns:1fr 56px;gap:8px;margin-top:24px}
+.pdp-actions .btn{width:100%;justify-content:center;padding:18px}
+.pdp-actions .wish{
+  border:1px solid var(--line-strong);width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+}
+.pdp-actions .wish svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.pdp-actions .wish.active svg{fill:var(--sale);stroke:var(--sale)}
+.shipping-row{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--ink-soft);margin-top:20px}
+.shipping-row div{display:flex;align-items:center;gap:8px}
+.shipping-row svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.accordion{border-top:1px solid var(--line)}
+.accordion-item{border-bottom:1px solid var(--line)}
+.accordion-head{display:flex;justify-content:space-between;width:100%;padding:18px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;text-align:left}
+.accordion-body{padding:0 0 18px;color:var(--ink-soft);line-height:1.7;font-size:14px;display:none}
+.accordion-item.open .accordion-body{display:block}
+.accordion-item .chev{transition:transform var(--t-fast)}
+.accordion-item.open .chev{transform:rotate(45deg)}
+
+.reviews{padding:48px 0;border-top:1px solid var(--line)}
+.reviews h2{font-family:var(--serif);font-size:36px;font-weight:400;margin-bottom:32px}
+.review-list{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:780px){.review-list{grid-template-columns:1fr}}
+.review{padding:24px;border:1px solid var(--line)}
+.review .top{display:flex;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--muted)}
+.review .stars{color:var(--gold);margin-bottom:8px}
+.review h4{font-size:15px;font-weight:600;margin-bottom:8px}
+.review p{color:var(--ink-soft);font-size:14px;line-height:1.6}
+
+/* ============================================================
+   Cart drawer
+   ============================================================ */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:all var(--t-base);z-index:95}
+.scrim.open{opacity:1;visibility:visible}
+.cart-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(460px,100vw);background:var(--bg);
+  z-index:100;transform:translateX(100%);transition:transform var(--t-base) var(--ease);
+  display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:24px;border-bottom:1px solid var(--line)}
+.cart-head h3{font-family:var(--serif);font-size:24px;font-weight:400}
+.cart-items{flex:1;overflow-y:auto;padding:8px 24px}
+.cart-empty{padding:64px 24px;text-align:center;color:var(--muted)}
+.cart-empty svg{width:48px;height:48px;stroke:currentColor;fill:none;stroke-width:1;margin-bottom:16px}
+.cart-item{display:grid;grid-template-columns:80px 1fr auto;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.cart-item img{width:80px;height:106px;object-fit:cover;background:var(--line)}
+.cart-item .ci-name{font-size:13px;font-weight:500;margin-bottom:4px}
+.cart-item .ci-meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+.cart-item .ci-qty{display:inline-flex;align-items:center;border:1px solid var(--line-strong);font-size:12px}
+.cart-item .ci-qty button{padding:4px 10px}
+.cart-item .ci-qty span{padding:0 8px;min-width:24px;text-align:center}
+.cart-item .ci-price{text-align:right;font-size:13px}
+.cart-item .ci-remove{font-size:11px;color:var(--muted);text-decoration:underline;margin-top:8px;display:block;text-align:right}
+.cart-foot{padding:24px;border-top:1px solid var(--line)}
+.cart-row{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:var(--ink-soft)}
+.cart-row.total{font-size:16px;color:var(--ink);font-weight:600;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.cart-foot .btn{display:flex;justify-content:center;width:100%;margin-top:18px;padding:18px}
+
+/* ============================================================
+   Checkout
+   ============================================================ */
+.checkout-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;padding:48px 0 96px}
+@media(max-width:880px){.checkout-layout{grid-template-columns:1fr}}
+.checkout-form .step{margin-bottom:36px}
+.checkout-form h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.checkout-form h3 .num{width:28px;height:28px;border-radius:50%;border:1px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:12px;font-weight:600}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.field-row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.field input, .field select{padding:14px;border:1px solid var(--line-strong);background:transparent;font-family:inherit;font-size:14px;color:var(--ink);outline:none;transition:border var(--t-fast)}
+.field input:focus, .field select:focus{border-color:var(--ink)}
+.pay-methods{display:grid;gap:10px;margin-bottom:18px}
+.pay-method{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid var(--line-strong);cursor:pointer;transition:all var(--t-fast)}
+.pay-method.active{border-color:var(--ink);background:var(--bg-elev)}
+.pay-method .dot{width:14px;height:14px;border-radius:50%;border:1px solid var(--line-strong);flex-shrink:0;position:relative}
+.pay-method.active .dot::after{content:'';position:absolute;inset:3px;background:var(--ink);border-radius:50%}
+.pay-method-label{font-size:14px;font-weight:500}
+.pay-method-meta{font-size:12px;color:var(--muted)}
+.pay-method-logos{margin-left:auto;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.summary{background:var(--bg-elev);padding:32px;border:1px solid var(--line);align-self:start;position:sticky;top:88px}
+.summary h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:18px}
+.summary .ci-mini{display:grid;grid-template-columns:60px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.summary .ci-mini img{width:60px;height:80px;object-fit:cover}
+.summary .ci-mini .nm{font-size:13px;font-weight:500}
+.summary .ci-mini .mt{font-size:11px;color:var(--muted)}
+.summary .ci-mini .pr{font-size:13px}
+.summary .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-soft);padding:6px 0}
+.summary .row.total{font-size:16px;color:var(--ink);font-weight:600;padding-top:14px;border-top:1px solid var(--line);margin-top:10px}
+.promo{display:flex;border:1px solid var(--line-strong);margin:14px 0}
+.promo input{flex:1;padding:12px;background:transparent;border:0;font-family:inherit;font-size:13px;color:var(--ink);outline:none}
+.promo button{padding:0 16px;background:var(--ink);color:var(--bg);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+
+/* ============================================================
+   Auth modal
+   ============================================================ */
+.auth-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px}
+.auth-modal.open{display:flex}
+.auth-modal .card{background:var(--bg);width:min(440px,100%);padding:40px;position:relative;animation:fadeIn .3s var(--ease)}
+.auth-modal h2{font-family:var(--serif);font-size:32px;font-weight:400;margin-bottom:8px}
+.auth-modal .sub{color:var(--ink-soft);margin-bottom:24px;font-size:14px}
+.auth-modal .close{position:absolute;top:16px;right:16px;font-size:20px;width:36px;height:36px}
+.auth-modal form{display:flex;flex-direction:column;gap:14px}
+.auth-modal input{padding:14px;border:1px solid var(--line-strong);background:transparent;font-family:inherit;font-size:14px;color:var(--ink)}
+.auth-modal .btn{justify-content:center;padding:16px}
+.auth-modal .alt{text-align:center;margin-top:18px;font-size:13px;color:var(--ink-soft)}
+.auth-modal .alt a{text-decoration:underline;cursor:pointer}
+.auth-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.auth-tab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:12px 0;cursor:pointer;color:var(--muted);position:relative}
+.auth-tab.active{color:var(--ink)}
+.auth-tab.active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ink)}
+
+/* ============================================================
+   Admin Login Screen
+   ============================================================ */
+.admin-login{
+  min-height:calc(100vh - 40px);display:flex;align-items:center;justify-content:center;
+  background:var(--bg);padding:32px 20px;position:relative;
+}
+.admin-login::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(800px circle at 20% 30%, rgba(168,139,74,.08), transparent 50%),
+    radial-gradient(600px circle at 80% 70%, rgba(10,10,10,.04), transparent 50%);
+  pointer-events:none;
+}
+.login-card{
+  width:100%;max-width:440px;padding:48px;background:var(--bg-elev);
+  border:1px solid var(--line);position:relative;z-index:1;
+  box-shadow:var(--shadow);
+}
+.login-brand{text-align:center;margin-bottom:40px}
+.login-brand .logo{font-size:24px;display:inline-block;text-align:center}
+.login-brand .tag{font-size:10px;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;margin-top:18px;display:block;font-weight:500}
+.login-card h2{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:8px;letter-spacing:-.01em}
+.login-card .sub{color:var(--ink-soft);margin-bottom:28px;font-size:13px;line-height:1.6}
+.login-card form{display:flex;flex-direction:column;gap:14px}
+.login-card .field{position:relative}
+.login-card input{
+  width:100%;padding:14px 14px 14px 44px;border:1px solid var(--line-strong);
+  background:transparent;font-family:inherit;font-size:14px;color:var(--ink);
+  outline:none;transition:border var(--t-fast);
+}
+.login-card input:focus{border-color:var(--ink)}
+.login-card .field svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.5}
+.login-card .show-pwd{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;cursor:pointer;background:none;border:0}
+.login-card .show-pwd:hover{color:var(--ink)}
+.login-row{display:flex;justify-content:space-between;align-items:center;margin:6px 0 8px;font-size:12px;color:var(--ink-soft)}
+.login-row label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.login-row a{cursor:pointer;text-decoration:underline}
+.login-error{
+  background:rgba(177,68,42,.08);border:1px solid rgba(177,68,42,.3);color:var(--sale);
+  padding:12px 14px;font-size:12px;line-height:1.6;display:none;
+}
+.login-error.show{display:block;animation:shake .35s var(--ease)}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  75%{transform:translateX(6px)}
+}
+.login-card .btn{justify-content:center;padding:16px;margin-top:8px;font-weight:500}
+.login-card .btn:disabled{opacity:.5;cursor:not-allowed}
+.login-divider{text-align:center;font-size:11px;letter-spacing:.18em;color:var(--muted);margin:24px 0 18px;text-transform:uppercase;position:relative}
+.login-divider::before,.login-divider::after{
+  content:'';position:absolute;top:50%;width:30%;height:1px;background:var(--line);
+}
+.login-divider::before{left:0}.login-divider::after{right:0}
+.login-2fa{
+  display:flex;gap:10px;justify-content:center;margin:14px 0;
+}
+.login-2fa input{
+  width:48px;height:56px;text-align:center;font-size:20px;font-family:var(--serif);
+  padding:0;border:1px solid var(--line-strong);background:transparent;color:var(--ink);
+}
+.login-foot{text-align:center;margin-top:20px;font-size:11px;color:var(--muted);letter-spacing:.06em;line-height:1.7}
+.login-foot a{cursor:pointer;text-decoration:underline}
+.lockout-banner{
+  background:var(--ink);color:var(--bg);padding:14px;font-size:12px;letter-spacing:.06em;text-align:center;margin-bottom:24px;
+}
+.lockout-banner strong{display:block;font-family:var(--serif);font-size:18px;margin-bottom:4px;letter-spacing:0}
+
+/* ============================================================
+   Admin
+   ============================================================ */
+/* Admin top bar */
+.admin-topbar{
+  position:sticky;top:0;z-index:50;background:var(--bg-elev);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;gap:16px;
+}
+.admin-topbar .brand{display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:18px;letter-spacing:.04em}
+.admin-topbar .brand small{font-size:9px;letter-spacing:.32em;color:var(--muted);font-family:var(--sans);font-weight:500;padding-left:14px;border-left:1px solid var(--line)}
+.admin-topbar .actions{display:flex;align-items:center;gap:8px}
+.admin-topbar .user-chip{
+  display:flex;align-items:center;gap:10px;padding:6px 12px;border-radius:24px;
+  cursor:pointer;transition:background var(--t-fast);
+}
+.admin-topbar .user-chip:hover{background:var(--bg)}
+.admin-topbar .avatar{
+  width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.04em;
+}
+.admin-topbar .user-name{font-size:12px;font-weight:500}
+.admin-topbar .user-role{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.admin-topbar .search-input{
+  padding:8px 14px 8px 36px;border:1px solid var(--line);background:var(--bg);
+  font-family:inherit;font-size:13px;color:var(--ink);outline:none;width:280px;
+  position:relative;border-radius:6px;
+}
+.admin-topbar .search-wrap{position:relative}
+.admin-topbar .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:1.5;pointer-events:none}
+.admin-topbar .icon-btn{position:relative}
+.admin-topbar .notif-dot{position:absolute;top:8px;right:8px;width:6px;height:6px;background:var(--sale);border-radius:50%}
+.popover{
+  position:absolute;top:calc(100% + 8px);right:0;background:var(--bg-elev);border:1px solid var(--line);
+  width:340px;box-shadow:var(--shadow);display:none;z-index:60;
+}
+.popover.open{display:block;animation:fadeIn .15s var(--ease)}
+.popover-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.popover-head h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.popover-head a{font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer}
+.popover-list{max-height:380px;overflow-y:auto}
+.popover-item{padding:12px 16px;border-bottom:1px solid var(--line);font-size:12px;cursor:pointer;transition:background var(--t-fast)}
+.popover-item:last-child{border-bottom:0}
+.popover-item:hover{background:var(--bg)}
+.popover-item .ttl{font-weight:500;color:var(--ink);margin-bottom:3px}
+.popover-item .tm{color:var(--muted);font-size:11px;letter-spacing:.04em}
+.popover-foot{padding:10px 16px;border-top:1px solid var(--line);text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);cursor:pointer;font-weight:500}
+.popover-foot:hover{background:var(--bg)}
+
+.admin-shell{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 60px - 40px)}
+@media(max-width:880px){.admin-shell{grid-template-columns:1fr}}
+.admin-side{background:var(--bg-elev);border-right:1px solid var(--line);padding:32px 0}
+.admin-side h4{padding:0 24px 18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.admin-side a{display:flex;align-items:center;gap:12px;padding:12px 24px;font-size:13px;color:var(--ink-soft);cursor:pointer;border-left:2px solid transparent}
+.admin-side a.active{color:var(--ink);background:var(--bg);border-left-color:var(--ink);font-weight:500}
+.admin-side a:hover{background:var(--bg)}
+.admin-side svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+.admin-main{padding:40px}
+@media(max-width:880px){.admin-main{padding:24px}}
+.admin-main h1{font-family:var(--serif);font-size:36px;font-weight:400;margin-bottom:8px}
+.admin-main .lead{color:var(--ink-soft);margin-bottom:32px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+@media(max-width:880px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--bg-elev);border:1px solid var(--line);padding:24px}
+.kpi .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:8px}
+.kpi .value{font-family:var(--serif);font-size:32px;font-weight:500}
+.kpi .delta{font-size:12px;color:var(--ok);margin-top:6px}
+.kpi .delta.down{color:var(--sale)}
+.admin-card{background:var(--bg-elev);border:1px solid var(--line);padding:24px;margin-bottom:24px}
+.admin-card h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:18px}
+table.admin-table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-table th{text-align:left;padding:12px 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);font-weight:500}
+.admin-table td{padding:14px 8px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+.admin-table tr:last-child td{border-bottom:0}
+.status-pill{display:inline-block;padding:3px 10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-radius:999px}
+.status-pill.shipped{background:rgba(58,106,58,.12);color:#3a6a3a}
+.status-pill.pending{background:rgba(168,139,74,.16);color:var(--gold)}
+.status-pill.refunded{background:rgba(177,68,42,.12);color:var(--sale)}
+.bars{display:flex;align-items:flex-end;gap:14px;height:180px;padding:8px 0}
+.bar{flex:1;background:linear-gradient(180deg,var(--ink),var(--ink-soft));position:relative;border-radius:3px 3px 0 0;min-width:10px;transition:all var(--t-base)}
+.bar:hover{opacity:.85}
+.bar span{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted);letter-spacing:.08em}
+
+/* Admin module sections */
+.admin-section{display:none}
+.admin-section.active{display:block;animation:fadeIn .25s var(--ease)}
+.section-bar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.section-bar h1{font-family:var(--serif);font-size:32px;font-weight:400;margin-bottom:4px}
+.section-bar .lead{color:var(--ink-soft);font-size:13px;margin:0}
+.section-bar .actions{display:flex;gap:8px;align-items:center}
+.btn-sm{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 16px;
+  background:var(--ink);color:var(--bg);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:500;border-radius:0;cursor:pointer;
+}
+.btn-sm.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+.btn-sm.danger{background:var(--sale)}
+.btn-sm svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.admin-table-card{background:var(--bg-elev);border:1px solid var(--line)}
+.admin-table-toolbar{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.admin-table-toolbar input, .admin-table-toolbar select{
+  padding:8px 12px;border:1px solid var(--line);background:transparent;
+  font-family:inherit;font-size:12px;color:var(--ink);outline:none;
+}
+.admin-table-toolbar input{flex:1;min-width:200px}
+.admin-table-wrap{overflow-x:auto}
+table.admin-table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-table th{text-align:left;padding:14px 16px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);font-weight:600;background:var(--bg-elev);position:sticky;top:0;white-space:nowrap}
+.admin-table td{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--ink-soft);vertical-align:middle}
+.admin-table tr:last-child td{border-bottom:0}
+.admin-table tr:hover td{background:var(--bg)}
+.admin-table .pname{display:flex;align-items:center;gap:12px;color:var(--ink);font-weight:500}
+.admin-table .pname img{width:42px;height:54px;object-fit:cover;background:var(--line)}
+.admin-table .row-actions{display:flex;gap:6px;justify-content:flex-end}
+.admin-table .row-actions button{
+  width:30px;height:30px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;color:var(--ink-soft);transition:all var(--t-fast);
+}
+.admin-table .row-actions button:hover{border-color:var(--ink);color:var(--ink)}
+.admin-table .row-actions button.danger:hover{border-color:var(--sale);color:var(--sale)}
+.admin-table .row-actions svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.status-pill.draft{background:rgba(139,139,133,.15);color:var(--muted)}
+.status-pill.published{background:rgba(58,106,58,.12);color:#3a6a3a}
+.status-pill.out-of-stock{background:rgba(177,68,42,.12);color:var(--sale)}
+.status-pill.archived{background:rgba(58,58,56,.12);color:var(--ink-soft)}
+.status-pill.processing{background:rgba(168,139,74,.16);color:var(--gold)}
+.status-pill.delivered{background:rgba(58,106,58,.18);color:#3a6a3a}
+.status-pill.cancelled{background:rgba(177,68,42,.15);color:var(--sale)}
+.status-pill.vip{background:linear-gradient(135deg,#a88b4a,#8a7038);color:#fff}
+
+.stock-bar{display:inline-block;width:90px;height:6px;background:var(--line);border-radius:3px;overflow:hidden;vertical-align:middle;margin-right:8px}
+.stock-bar > span{display:block;height:100%;background:var(--ink);transition:width var(--t-base)}
+.stock-bar.low > span{background:var(--gold)}
+.stock-bar.critical > span{background:var(--sale)}
+
+/* Edit drawer */
+.edit-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);background:var(--bg);
+  z-index:110;transform:translateX(100%);transition:transform var(--t-base) var(--ease);
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.edit-drawer.open{transform:translateX(0)}
+.edit-drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.edit-drawer-head h3{font-family:var(--serif);font-size:22px;font-weight:500}
+.edit-drawer-body{flex:1;overflow-y:auto;padding:24px}
+.edit-drawer-foot{padding:16px 24px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;background:var(--bg-elev)}
+.form-section{margin-bottom:24px}
+.form-section h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:14px;color:var(--ink)}
+
+/* Settings */
+.settings-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
+@media(max-width:880px){.settings-grid{grid-template-columns:1fr}}
+.settings-nav{display:flex;flex-direction:column;gap:2px}
+.settings-nav a{padding:10px 14px;font-size:13px;color:var(--ink-soft);cursor:pointer;border-left:2px solid transparent}
+.settings-nav a.active{background:var(--bg-elev);border-left-color:var(--ink);color:var(--ink);font-weight:500}
+.settings-panel{background:var(--bg-elev);border:1px solid var(--line);padding:32px}
+.settings-panel h2{font-family:var(--serif);font-size:24px;font-weight:500;margin-bottom:6px}
+.settings-panel .lead{color:var(--ink-soft);font-size:13px;margin-bottom:24px}
+
+/* Empty state */
+.empty-state{padding:60px 24px;text-align:center;color:var(--muted)}
+.empty-state svg{width:48px;height:48px;stroke:currentColor;fill:none;stroke-width:1;margin-bottom:14px}
+.empty-state h3{font-family:var(--serif);font-size:20px;color:var(--ink-soft);font-weight:500;margin-bottom:6px}
+
+/* Activity feed */
+.activity-feed{max-height:300px;overflow-y:auto}
+.activity-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
+.activity-item:last-child{border-bottom:0}
+.activity-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);margin-top:6px;flex-shrink:0}
+.activity-dot.warn{background:var(--gold)}.activity-dot.danger{background:var(--sale)}
+.activity-content{flex:1}
+.activity-content .who{font-weight:500}
+.activity-content .what{color:var(--ink-soft)}
+.activity-content .when{font-size:11px;color:var(--muted);margin-top:2px}
+
+.session-warning{
+  position:fixed;bottom:24px;left:24px;background:var(--ink);color:var(--bg);padding:14px 18px;font-size:12px;letter-spacing:.06em;
+  z-index:90;display:none;max-width:300px;line-height:1.5;
+}
+.session-warning.show{display:block;animation:fadeIn .25s var(--ease)}
+.session-warning strong{display:block;margin-bottom:4px;font-weight:600}
+.session-warning button{display:inline-block;margin-top:8px;background:var(--bg);color:var(--ink);padding:6px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+
+/* ============================================================
+   Zoom modal
+   ============================================================ */
+.zoom-modal{position:fixed;inset:0;z-index:130;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:32px;cursor:zoom-out}
+.zoom-modal.open{display:flex}
+.zoom-modal img{max-width:96vw;max-height:92vh;object-fit:contain}
+
+/* ============================================================
+   Toast
+   ============================================================ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);z-index:140;background:var(--ink);color:var(--bg);padding:14px 24px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:transform var(--t-base) var(--ease)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.hide-mobile{}
+@media(max-width:720px){.hide-mobile{display:none!important}}
+.reveal{opacity:0;transform:translateY(24px);transition:all .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Announcement bar
+     ============================================================ -->
+<div class="announcebar">
+  <span>Complimentary shipping on orders over $200 · Free returns within 30 days</span>
+</div>
+
+<!-- ============================================================
+     Navigation
+     ============================================================ -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <button class="icon-btn mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-cats">
+        <a data-cat="women" onclick="goView('plp','women')">Women</a>
+        <a data-cat="men" onclick="goView('plp','men')">Men</a>
+        <a data-cat="shoes" onclick="goView('plp','shoes')">Shoes</a>
+        <a data-cat="accessories" onclick="goView('plp','accessories')">Accessories</a>
+        <a data-cat="new" onclick="goView('plp','new')">New Arrivals</a>
+        <a class="sale" data-cat="sale" onclick="goView('plp','sale')">Sale</a>
+      </nav>
+    </div>
+    <div class="logo" onclick="goView('home')">
+      MODERN CULTURE
+      <small>EST. 2024</small>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn hide-mobile" aria-label="Search" onclick="alert('Search opened')">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Theme" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      </button>
+      <button class="icon-btn hide-mobile" aria-label="Account" onclick="openAuth()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Cart" onclick="openCart()">
+        <svg viewBox="0 0 24 24"><path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5H9.5a2 2 0 0 1-2-1.5L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="icon-btn mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a onclick="goView('plp','women');toggleMobileMenu()">Women</a>
+  <a onclick="goView('plp','men');toggleMobileMenu()">Men</a>
+  <a onclick="goView('plp','shoes');toggleMobileMenu()">Shoes</a>
+  <a onclick="goView('plp','accessories');toggleMobileMenu()">Accessories</a>
+  <a onclick="goView('plp','new');toggleMobileMenu()">New Arrivals</a>
+  <a onclick="goView('plp','sale');toggleMobileMenu()" style="color:var(--sale)">Sale</a>
+  <a onclick="openAuth();toggleMobileMenu()" style="margin-top:32px;font-size:18px;font-family:var(--sans);letter-spacing:.18em;text-transform:uppercase">Sign in / Register</a>
+</div>
+
+<!-- ============================================================
+     HOMEPAGE
+     ============================================================ -->
+<main id="view-home" class="view active">
+
+  <!-- Hero carousel -->
+  <section class="hero" style="padding:0">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=2000&q=80')">
+      <div class="hero-content">
+        <div class="eyebrow">Spring · Summer 26</div>
+        <h1>Quiet <em>codes</em><br/>of modern luxury.</h1>
+        <a class="hero-cta" onclick="goView('plp','women')">
+          Discover the collection
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=2000&q=80')">
+      <div class="hero-content">
+        <div class="eyebrow">Tailoring</div>
+        <h1>The new <em>silhouette.</em></h1>
+        <a class="hero-cta" onclick="goView('plp','men')">
+          Shop the tailoring edit
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=2000&q=80')">
+      <div class="hero-content">
+        <div class="eyebrow">Editorial</div>
+        <h1>Cut, <em>considered.</em></h1>
+        <a class="hero-cta" onclick="goView('plp','new')">
+          See new arrivals
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <button class="hero-nav prev" onclick="heroPrev()" aria-label="Previous">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="hero-nav next" onclick="heroNext()" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="hero-dots" id="hero-dots">
+      <button class="active" onclick="heroGo(0)"></button>
+      <button onclick="heroGo(1)"></button>
+      <button onclick="heroGo(2)"></button>
+    </div>
+  </section>
+
+  <!-- Category tiles -->
+  <section class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Shop by category</div>
+        <h2>The edits.</h2>
+      </div>
+    </div>
+    <div class="cat-grid reveal">
+      <div class="cat-tile" onclick="goView('plp','women')">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Women">
+        <div class="cat-tile-label">
+          <div class="eyebrow">01 / Women</div>
+          <h3>Soft tailoring</h3>
+        </div>
+      </div>
+      <div class="cat-tile" onclick="goView('plp','men')">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=900&q=80" alt="Men">
+        <div class="cat-tile-label">
+          <div class="eyebrow">02 / Men</div>
+          <h3>Quiet essentials</h3>
+        </div>
+      </div>
+      <div class="cat-tile" onclick="goView('plp','shoes')">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=900&q=80" alt="Shoes">
+        <div class="cat-tile-label">
+          <div class="eyebrow">03 / Footwear</div>
+          <h3>Considered soles</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New arrivals product grid -->
+  <section class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Just in</div>
+        <h2>New arrivals.</h2>
+      </div>
+      <a class="link" onclick="goView('plp','new')">View all</a>
+    </div>
+    <div class="product-grid" id="home-grid"></div>
+  </section>
+
+  <!-- Editorial split -->
+  <section class="container">
+    <div class="editorial reveal">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80" alt="Editorial">
+      <div class="editorial-text">
+        <div class="eyebrow" style="margin-bottom:14px">The story</div>
+        <h2>Modern Culture is not a trend &mdash; it is a way of dressing.</h2>
+        <p>We design slowly. Each piece earns its place through fabric, fit and finish. From the studio in Lisbon to the atelier in Milan, every garment is made to outlast a season &mdash; cut to outlast a feeling.</p>
+        <a class="btn ghost" onclick="goView('plp','women')">Read the manifesto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Modern Culture <span class="dot"></span> Soft Tailoring <span class="dot"></span> Quiet Luxury <span class="dot"></span> SS26 <span class="dot"></span> Made Slowly <span class="dot"></span></span>
+      <span>Modern Culture <span class="dot"></span> Soft Tailoring <span class="dot"></span> Quiet Luxury <span class="dot"></span> SS26 <span class="dot"></span> Made Slowly <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- Bestsellers -->
+  <section class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">The icons</div>
+        <h2>Bestsellers.</h2>
+      </div>
+      <a class="link" onclick="goView('plp','new')">View all</a>
+    </div>
+    <div class="product-grid" id="best-grid"></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Join the culture.</h2>
+      <p>Be the first to receive new collection previews, private events and the occasional letter from the atelier.</p>
+      <form onsubmit="event.preventDefault();toast('You\\'re on the list.');this.reset()">
+        <input type="email" placeholder="Email address" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     PLP — Product listing page
+     ============================================================ -->
+<main id="view-plp" class="view">
+  <div class="container">
+    <div class="plp-head">
+      <div class="crumb"><span onclick="goView('home')" style="cursor:pointer">Home</span> / <span id="plp-crumb">Women</span></div>
+      <h1 id="plp-title">Women</h1>
+      <p id="plp-desc">Soft tailoring, considered knits and the new silhouette &mdash; engineered for movement, designed to last.</p>
+    </div>
+    <div class="plp-layout">
+      <aside class="filters">
+        <div class="filter-group">
+          <h4>Category <span>−</span></h4>
+          <div class="filter-options">
+            <label><input type="checkbox"> Outerwear</label>
+            <label><input type="checkbox"> Tailoring</label>
+            <label><input type="checkbox"> Knitwear</label>
+            <label><input type="checkbox"> Shirts</label>
+            <label><input type="checkbox"> Trousers</label>
+            <label><input type="checkbox"> Dresses</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Size <span>−</span></h4>
+          <div class="filter-options" style="flex-direction:row;flex-wrap:wrap;gap:6px">
+            <label style="border:1px solid var(--line-strong);padding:6px 12px;cursor:pointer"><input type="checkbox" hidden>XS</label>
+            <label style="border:1px solid var(--line-strong);padding:6px 12px;cursor:pointer"><input type="checkbox" hidden>S</label>
+            <label style="border:1px solid var(--line-strong);padding:6px 12px;cursor:pointer"><input type="checkbox" hidden>M</label>
+            <label style="border:1px solid var(--line-strong);padding:6px 12px;cursor:pointer"><input type="checkbox" hidden>L</label>
+            <label style="border:1px solid var(--line-strong);padding:6px 12px;cursor:pointer"><input type="checkbox" hidden>XL</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Colour <span>−</span></h4>
+          <div class="swatches">
+            <div class="sw" style="background:#000" title="Black"></div>
+            <div class="sw" style="background:#fff;border-color:#999" title="White"></div>
+            <div class="sw" style="background:#d4cdbd" title="Cream"></div>
+            <div class="sw" style="background:#6a5a48" title="Camel"></div>
+            <div class="sw" style="background:#3a3a38" title="Charcoal"></div>
+            <div class="sw" style="background:#7a3030" title="Burgundy"></div>
+            <div class="sw" style="background:#2a3a4a" title="Navy"></div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Price <span>−</span></h4>
+          <div class="filter-options">
+            <label><input type="checkbox"> Under $200</label>
+            <label><input type="checkbox"> $200 — $500</label>
+            <label><input type="checkbox"> $500 — $1000</label>
+            <label><input type="checkbox"> Above $1000</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Availability <span>−</span></h4>
+          <div class="filter-options">
+            <label><input type="checkbox"> In stock</label>
+            <label><input type="checkbox"> Coming soon</label>
+          </div>
+        </div>
+      </aside>
+      <div>
+        <div class="plp-toolbar">
+          <div class="count" id="plp-count">24 pieces</div>
+          <select class="sort">
+            <option>Sort · Featured</option>
+            <option>Price · Low to high</option>
+            <option>Price · High to low</option>
+            <option>Newest</option>
+          </select>
+        </div>
+        <div class="product-grid" id="plp-grid"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     PDP — Product detail page
+     ============================================================ -->
+<main id="view-pdp" class="view">
+  <div class="container">
+    <div class="pdp-layout">
+      <div class="pdp-gallery" id="pdp-gallery"></div>
+      <div class="pdp-info" id="pdp-info"></div>
+    </div>
+
+    <div class="reviews">
+      <h2>Customer reviews</h2>
+      <div class="review-list">
+        <div class="review">
+          <div class="top"><span>Aria L. · Verified buyer</span><span>3 weeks ago</span></div>
+          <div class="stars">★★★★★</div>
+          <h4>The cut is everything.</h4>
+          <p>The shoulder line is exactly what I look for &mdash; clean, fluid, never stiff. The fabric drapes beautifully and only gets better with wear.</p>
+        </div>
+        <div class="review">
+          <div class="top"><span>Marcus T. · Verified buyer</span><span>2 months ago</span></div>
+          <div class="stars">★★★★★</div>
+          <h4>Worth every penny.</h4>
+          <p>I&rsquo;ve owned three premium brands in this category. This sits above them all in finishing. The buttons, the lining, the topstitching &mdash; flawless.</p>
+        </div>
+        <div class="review">
+          <div class="top"><span>Sofia M.</span><span>2 months ago</span></div>
+          <div class="stars">★★★★☆</div>
+          <h4>Beautiful but runs slightly large.</h4>
+          <p>Size down if you&rsquo;re between sizes. Otherwise the quality is exceptional and shipping was very fast.</p>
+        </div>
+        <div class="review">
+          <div class="top"><span>Lin K. · Verified buyer</span><span>4 months ago</span></div>
+          <div class="stars">★★★★★</div>
+          <h4>An instant wardrobe staple.</h4>
+          <p>I reach for this piece three times a week. The colour is rich, the fit is sharp, and it goes with absolutely everything in my closet.</p>
+        </div>
+      </div>
+    </div>
+
+    <section style="padding:48px 0 96px;border-top:1px solid var(--line)">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Curated for you</div>
+          <h2>You may also like.</h2>
+        </div>
+      </div>
+      <div class="product-grid" id="pdp-related"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================================================
+     Checkout
+     ============================================================ -->
+<main id="view-checkout" class="view">
+  <div class="container">
+    <div class="plp-head" style="border:0">
+      <div class="crumb"><span onclick="goView('home')" style="cursor:pointer">Home</span> / Cart / Checkout</div>
+      <h1>Checkout</h1>
+    </div>
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <div class="step">
+          <h3><span class="num">1</span> Contact</h3>
+          <div class="field-row">
+            <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" value=""></div>
+            <div class="field"><label>Phone</label><input type="tel" placeholder="+1 555 000 0000"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3><span class="num">2</span> Shipping address</h3>
+          <div class="field-row">
+            <div class="field"><label>First name</label><input type="text"></div>
+            <div class="field"><label>Last name</label><input type="text"></div>
+          </div>
+          <div class="field-row single"><div class="field"><label>Street address</label><input type="text"></div></div>
+          <div class="field-row">
+            <div class="field"><label>City</label><input type="text"></div>
+            <div class="field"><label>Postcode</label><input type="text"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Country</label>
+              <select><option>United States</option><option>United Kingdom</option><option>France</option><option>Italy</option><option>Zimbabwe</option><option>South Africa</option><option>Japan</option></select>
+            </div>
+            <div class="field"><label>Currency</label>
+              <select><option>USD — $</option><option>EUR — €</option><option>GBP — £</option><option>ZAR — R</option><option>ZWL — Z$</option></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3><span class="num">3</span> Delivery method</h3>
+          <div class="pay-methods">
+            <div class="pay-method active" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">Standard · 3–5 days</div><div class="pay-method-meta">Complimentary on orders over $200</div></div>
+              <div class="pay-method-logos">FREE</div>
+            </div>
+            <div class="pay-method" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">Express · 1–2 days</div><div class="pay-method-meta">Signed for · tracked</div></div>
+              <div class="pay-method-logos">$24</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3><span class="num">4</span> Payment</h3>
+          <div class="pay-methods">
+            <div class="pay-method active" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">Card</div><div class="pay-method-meta">Visa · Mastercard · Amex · powered by Stripe</div></div>
+              <div class="pay-method-logos">VISA · MC · AMEX</div>
+            </div>
+            <div class="pay-method" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">PayPal</div><div class="pay-method-meta">Pay with your PayPal balance</div></div>
+              <div class="pay-method-logos">PAYPAL</div>
+            </div>
+            <div class="pay-method" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">EcoCash</div><div class="pay-method-meta">For our Zimbabwe customers</div></div>
+              <div class="pay-method-logos">ECOCASH</div>
+            </div>
+            <div class="pay-method" onclick="selectPay(this,event)">
+              <div class="dot"></div>
+              <div><div class="pay-method-label">Apple Pay</div><div class="pay-method-meta">One-tap secure checkout</div></div>
+              <div class="pay-method-logos">APPLE PAY</div>
+            </div>
+          </div>
+          <div class="field-row"><div class="field"><label>Card number</label><input type="text" placeholder="•••• •••• •••• ••••"></div></div>
+          <div class="field-row">
+            <div class="field"><label>Expiry</label><input type="text" placeholder="MM / YY"></div>
+            <div class="field"><label>CVC</label><input type="text" placeholder="•••"></div>
+          </div>
+        </div>
+
+        <button class="btn" style="width:100%;justify-content:center;padding:20px" onclick="placeOrder()">Place order — secure checkout 🔒</button>
+        <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px;letter-spacing:.06em">Your payment is encrypted and processed securely. We do not store card details.</p>
+      </div>
+
+      <aside class="summary" id="checkout-summary">
+        <h3>Order summary</h3>
+        <div id="checkout-items"></div>
+        <div class="promo">
+          <input type="text" placeholder="Promo code">
+          <button onclick="toast('Promo applied: 10% off')">Apply</button>
+        </div>
+        <div class="row"><span>Subtotal</span><span id="co-subtotal">$0</span></div>
+        <div class="row"><span>Shipping</span><span>Free</span></div>
+        <div class="row"><span>Estimated tax</span><span id="co-tax">$0</span></div>
+        <div class="row total"><span>Total</span><span id="co-total">$0</span></div>
+        <div style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.6">
+          <strong style="color:var(--ink)">Need help?</strong><br>
+          Our concierge is available Mon–Sat, 9am–8pm.<br>
+          concierge@modernculture.co
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     ADMIN LOGIN SCREEN (gate)
+     ============================================================ -->
+<main id="view-admin-login" class="view">
+  <div class="admin-login">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="logo">MODERN CULTURE<small style="display:block;text-align:center;font-family:var(--sans);font-weight:500;color:var(--muted);font-size:10px;letter-spacing:.32em;margin-top:-2px">ATELIER ADMIN</small></div>
+      </div>
+
+      <div class="lockout-banner" id="lockout-banner" style="display:none">
+        <strong>Account temporarily locked</strong>
+        <span id="lockout-msg">Too many failed attempts. Please try again in 10 minutes.</span>
+      </div>
+
+      <h2 id="login-title">Sign in to your atelier.</h2>
+      <p class="sub" id="login-sub">Authorised personnel only. All access is logged and monitored.</p>
+
+      <div class="login-error" id="login-error">Incorrect credentials. <span id="attempts-left"></span></div>
+
+      <form id="login-form" onsubmit="event.preventDefault();attemptLogin()">
+        <div class="field">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          <input type="email" id="login-email" placeholder="Admin email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" required>
+          <button type="button" class="show-pwd" onclick="togglePwd()">Show</button>
+        </div>
+
+        <div class="login-row">
+          <label><input type="checkbox" id="remember-me"> Remember this device</label>
+          <a onclick="forgotPassword()">Forgot password?</a>
+        </div>
+
+        <button class="btn" type="submit" id="login-submit">Continue →</button>
+      </form>
+
+      <div class="login-divider" id="twofa-divider" style="display:none">2-step verification</div>
+      <div id="twofa-section" style="display:none">
+        <p class="sub" style="margin-bottom:14px">A 6-digit code was sent to your authenticator. Enter it below.</p>
+        <div class="login-2fa" id="twofa-inputs">
+          <input maxlength="1" pattern="[0-9]" inputmode="numeric"><input maxlength="1" pattern="[0-9]" inputmode="numeric"><input maxlength="1" pattern="[0-9]" inputmode="numeric"><input maxlength="1" pattern="[0-9]" inputmode="numeric"><input maxlength="1" pattern="[0-9]" inputmode="numeric"><input maxlength="1" pattern="[0-9]" inputmode="numeric">
+        </div>
+        <button class="btn" style="width:100%;justify-content:center;padding:14px" onclick="verify2FA()">Verify and sign in →</button>
+        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px"><a onclick="toast('Code resent.')" style="text-decoration:underline;cursor:pointer">Resend code</a></p>
+      </div>
+
+      <div class="login-foot">
+        <a onclick="goView('home')">← Back to storefront</a><br><br>
+        Protected by SSL · Sessions expire after 30 min inactivity<br>
+        All admin activity is logged
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     Admin dashboard
+     ============================================================ -->
+<main id="view-admin" class="view">
+  <div class="admin-topbar">
+    <div class="brand">MODERN CULTURE <small>ADMIN</small></div>
+    <div class="search-wrap" style="flex:1;max-width:380px;margin:0 24px">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input class="search-input" placeholder="Search orders, products, customers…" style="width:100%">
+    </div>
+    <div class="actions">
+      <div style="position:relative">
+        <button class="icon-btn" onclick="togglePopover('notif-pop',event)" aria-label="Notifications" title="Notifications">
+          <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+        <div class="popover" id="notif-pop" onclick="event.stopPropagation()">
+          <div class="popover-head"><h4>Notifications</h4><a onclick="toast('All marked as read')">Mark all read</a></div>
+          <div class="popover-list">
+            <div class="popover-item"><div class="ttl">New order #MC-10428 from Aria L.</div><div class="tm">3 min ago · $612.00</div></div>
+            <div class="popover-item"><div class="ttl">Low stock alert · Cashmere Coat (Camel)</div><div class="tm">12 min ago · 3 left</div></div>
+            <div class="popover-item"><div class="ttl">Refund requested for #MC-10401</div><div class="tm">1 hr ago · $214.00</div></div>
+            <div class="popover-item"><div class="ttl">Daily summary ready</div><div class="tm">8 hr ago · $24,841 revenue</div></div>
+          </div>
+          <div class="popover-foot">View all activity</div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <button class="icon-btn" onclick="togglePopover('activity-pop',event)" aria-label="Activity" title="Recent activity">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </button>
+        <div class="popover" id="activity-pop" onclick="event.stopPropagation()">
+          <div class="popover-head"><h4>Recent admin activity</h4></div>
+          <div class="popover-list activity-feed" id="activity-feed"></div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="user-chip" onclick="togglePopover('user-pop',event)">
+          <div class="avatar" id="user-avatar">A</div>
+          <div class="hide-mobile">
+            <div class="user-name" id="user-name">Atelier</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <div class="popover" id="user-pop" onclick="event.stopPropagation()" style="width:240px">
+          <div class="popover-head"><h4 id="user-pop-name">Atelier</h4></div>
+          <div class="popover-list">
+            <div class="popover-item"><div class="ttl">Profile &amp; preferences</div></div>
+            <div class="popover-item"><div class="ttl">Two-factor authentication</div><div class="tm">Enabled · Authenticator app</div></div>
+            <div class="popover-item"><div class="ttl">Devices &amp; sessions</div><div class="tm">2 active devices</div></div>
+            <div class="popover-item" onclick="logout()" style="color:var(--sale)"><div class="ttl" style="color:var(--sale)">Sign out</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <h4>Workspace</h4>
+      <a class="active" data-section="dashboard" onclick="adminGo('dashboard')"><svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9M5 10v10h14V10"/></svg>Dashboard</a>
+      <a data-section="orders" onclick="adminGo('orders')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 8h18"/></svg>Orders <span style="margin-left:auto;background:var(--sale);color:#fff;font-size:9px;padding:2px 6px;border-radius:10px">3</span></a>
+      <a data-section="products" onclick="adminGo('products')"><svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z"/></svg>Products</a>
+      <a data-section="inventory" onclick="adminGo('inventory')"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Inventory</a>
+      <a data-section="customers" onclick="adminGo('customers')"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M3 21c0-3 3-5 6-5s6 2 6 5M16 11l3 3 5-5"/></svg>Customers</a>
+      <a data-section="settings" onclick="adminGo('settings')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/></svg>Settings</a>
+      <h4 style="margin-top:24px">Account</h4>
+      <a onclick="toast('Activity log opened')"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>Activity log</a>
+      <a onclick="logout()" style="color:var(--sale)"><svg viewBox="0 0 24 24"><path d="M15 17l5-5-5-5M20 12H9M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"/></svg>Sign out</a>
+    </aside>
+    <div class="admin-main">
+
+      <!-- ===== DASHBOARD SECTION ===== -->
+      <div class="admin-section active" id="sec-dashboard">
+        <div class="section-bar">
+          <div>
+            <h1 id="greet">Good evening.</h1>
+            <p class="lead">Here&rsquo;s what&rsquo;s happening across Modern Culture today.</p>
+          </div>
+          <div class="actions">
+            <select class="sort"><option>Today</option><option>Last 7 days</option><option>Last 30 days</option><option>This year</option></select>
+            <button class="btn-sm ghost" onclick="toast('Export started')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="label">Revenue · today</div><div class="value">$24,841</div><div class="delta">+12.4% vs last week</div></div>
+          <div class="kpi"><div class="label">Orders · today</div><div class="value">186</div><div class="delta">+8.1%</div></div>
+          <div class="kpi"><div class="label">Avg. order value</div><div class="value">$334</div><div class="delta">+2.6%</div></div>
+          <div class="kpi"><div class="label">Conversion rate</div><div class="value">3.42%</div><div class="delta down">−0.4%</div></div>
+        </div>
+
+        <div class="admin-card">
+          <h3>Weekly revenue</h3>
+          <div class="bars">
+            <div class="bar" style="height:42%"><span>Mon</span></div>
+            <div class="bar" style="height:58%"><span>Tue</span></div>
+            <div class="bar" style="height:48%"><span>Wed</span></div>
+            <div class="bar" style="height:72%"><span>Thu</span></div>
+            <div class="bar" style="height:84%"><span>Fri</span></div>
+            <div class="bar" style="height:96%"><span>Sat</span></div>
+            <div class="bar" style="height:68%"><span>Sun</span></div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" class="admin-bottom">
+          <div class="admin-card">
+            <h3>Low stock alerts</h3>
+            <table class="admin-table">
+              <thead><tr><th>SKU</th><th>Product</th><th>Stock</th></tr></thead>
+              <tbody>
+                <tr><td>MC-W-101</td><td>Atelier Coat · Camel</td><td style="color:var(--sale)">3 left</td></tr>
+                <tr><td>MC-M-217</td><td>Wool Trouser · Charcoal</td><td style="color:var(--sale)">5 left</td></tr>
+                <tr><td>MC-S-308</td><td>Leather Derby · Black</td><td style="color:var(--gold)">12 left</td></tr>
+                <tr><td>MC-A-422</td><td>Silk Scarf · Ivory</td><td style="color:var(--gold)">8 left</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="admin-card">
+            <h3>Top products · this week</h3>
+            <table class="admin-table">
+              <thead><tr><th>Product</th><th>Sold</th><th>Revenue</th></tr></thead>
+              <tbody>
+                <tr><td>The Atelier Coat</td><td>42</td><td>$33,180</td></tr>
+                <tr><td>Soft Wool Trouser</td><td>61</td><td>$24,400</td></tr>
+                <tr><td>Cashmere Crew</td><td>54</td><td>$21,600</td></tr>
+                <tr><td>Leather Derby</td><td>28</td><td>$16,520</td></tr>
+                <tr><td>Silk Slip Dress</td><td>35</td><td>$15,575</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PRODUCTS SECTION ===== -->
+      <div class="admin-section" id="sec-products">
+        <div class="section-bar">
+          <div>
+            <h1>Products</h1>
+            <p class="lead"><span id="product-count">16</span> products · manage your catalog</p>
+          </div>
+          <div class="actions">
+            <button class="btn-sm ghost" onclick="toast('CSV exported')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+            <button class="btn-sm" onclick="openProductDrawer(null)"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add product</button>
+          </div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="admin-table-toolbar">
+            <input type="text" placeholder="Search by name, SKU, category…" id="product-search" oninput="renderAdminProducts()">
+            <select id="product-filter-cat" onchange="renderAdminProducts()">
+              <option value="">All categories</option>
+              <option value="women">Women</option>
+              <option value="men">Men</option>
+              <option value="shoes">Shoes</option>
+              <option value="accessories">Accessories</option>
+            </select>
+            <select id="product-filter-status" onchange="renderAdminProducts()">
+              <option value="">All statuses</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="out-of-stock">Out of stock</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th style="width:32px"><input type="checkbox"></th><th>Product</th><th>SKU</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead>
+              <tbody id="admin-products-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ORDERS SECTION ===== -->
+      <div class="admin-section" id="sec-orders">
+        <div class="section-bar">
+          <div>
+            <h1>Orders</h1>
+            <p class="lead">All orders · update status, view details, process refunds</p>
+          </div>
+          <div class="actions">
+            <button class="btn-sm ghost" onclick="toast('Bulk invoices generated')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>Generate invoices</button>
+          </div>
+        </div>
+        <div class="admin-table-card">
+          <div class="admin-table-toolbar">
+            <input type="text" placeholder="Search by order # or customer…" id="order-search" oninput="renderAdminOrders()">
+            <select id="order-filter-status" onchange="renderAdminOrders()">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="refunded">Refunded</option>
+            </select>
+            <select id="order-filter-pay" onchange="renderAdminOrders()">
+              <option value="">All payments</option>
+              <option value="stripe">Stripe</option>
+              <option value="paypal">PayPal</option>
+              <option value="ecocash">EcoCash</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th><th></th></tr></thead>
+              <tbody id="admin-orders-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INVENTORY SECTION ===== -->
+      <div class="admin-section" id="sec-inventory">
+        <div class="section-bar">
+          <div>
+            <h1>Inventory</h1>
+            <p class="lead">Stock levels across all SKUs and variants</p>
+          </div>
+          <div class="actions">
+            <button class="btn-sm ghost" onclick="toast('Stock count exported')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+            <button class="btn-sm" onclick="toast('Restock order created')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Create restock order</button>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="label">Total SKUs</div><div class="value">142</div><div class="delta">across 16 products</div></div>
+          <div class="kpi"><div class="label">In stock</div><div class="value">128</div><div class="delta">90.1%</div></div>
+          <div class="kpi"><div class="label">Low stock</div><div class="value" style="color:var(--gold)">8</div><div class="delta">need attention</div></div>
+          <div class="kpi"><div class="label">Out of stock</div><div class="value" style="color:var(--sale)">6</div><div class="delta down">lost sales</div></div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="admin-table-toolbar">
+            <input type="text" placeholder="Search SKU or product…" id="inv-search" oninput="renderInventory()">
+            <select id="inv-filter" onchange="renderInventory()">
+              <option value="">All stock levels</option>
+              <option value="critical">Critical (≤5)</option>
+              <option value="low">Low (6–15)</option>
+              <option value="ok">Healthy (16+)</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>SKU</th><th>Product</th><th>Variant</th><th>Stock</th><th>Reorder point</th><th></th></tr></thead>
+              <tbody id="admin-inv-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CUSTOMERS SECTION ===== -->
+      <div class="admin-section" id="sec-customers">
+        <div class="section-bar">
+          <div>
+            <h1>Customers</h1>
+            <p class="lead">All customers · order history, lifetime value, segments</p>
+          </div>
+          <div class="actions">
+            <button class="btn-sm ghost" onclick="toast('Customer data exported')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="label">Total customers</div><div class="value">2,184</div><div class="delta">+86 this month</div></div>
+          <div class="kpi"><div class="label">Returning</div><div class="value">38%</div><div class="delta">+2.4%</div></div>
+          <div class="kpi"><div class="label">Avg. lifetime value</div><div class="value">$842</div><div class="delta">+6.1%</div></div>
+          <div class="kpi"><div class="label">VIP segment</div><div class="value">142</div><div class="delta">$5k+ spend</div></div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="admin-table-toolbar">
+            <input type="text" placeholder="Search by name or email…" id="cust-search" oninput="renderCustomers()">
+            <select id="cust-filter" onchange="renderCustomers()">
+              <option value="">All segments</option>
+              <option value="vip">VIP</option>
+              <option value="repeat">Returning</option>
+              <option value="new">New</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Customer</th><th>Email</th><th>Location</th><th>Orders</th><th>Lifetime value</th><th>Segment</th><th></th></tr></thead>
+              <tbody id="admin-cust-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SETTINGS SECTION ===== -->
+      <div class="admin-section" id="sec-settings">
+        <div class="section-bar">
+          <div>
+            <h1>Settings</h1>
+            <p class="lead">Store configuration, payments, shipping, branding</p>
+          </div>
+        </div>
+        <div class="settings-grid">
+          <nav class="settings-nav">
+            <a class="active" data-pane="store" onclick="settingsGo('store',this)">Store details</a>
+            <a data-pane="branding" onclick="settingsGo('branding',this)">Branding</a>
+            <a data-pane="payments" onclick="settingsGo('payments',this)">Payments</a>
+            <a data-pane="shipping" onclick="settingsGo('shipping',this)">Shipping</a>
+            <a data-pane="tax" onclick="settingsGo('tax',this)">Tax</a>
+            <a data-pane="emails" onclick="settingsGo('emails',this)">Email &amp; notifications</a>
+            <a data-pane="security" onclick="settingsGo('security',this)">Security</a>
+            <a data-pane="team" onclick="settingsGo('team',this)">Team &amp; permissions</a>
+          </nav>
+          <div>
+            <div class="settings-panel" data-pane="store">
+              <h2>Store details</h2>
+              <p class="lead">Public information about your store.</p>
+              <div class="field-row"><div class="field"><label>Store name</label><input type="text" value="MODERN CULTURE"></div><div class="field"><label>Legal entity</label><input type="text" value="Modern Culture Atelier Ltd."></div></div>
+              <div class="field-row"><div class="field"><label>Contact email</label><input type="email" value="concierge@modernculture.co"></div><div class="field"><label>Phone</label><input type="tel" value="+44 20 0000 0000"></div></div>
+              <div class="field-row single"><div class="field"><label>Address</label><input type="text" value="Atelier 12, Mayfair, London W1S"></div></div>
+              <div class="field-row"><div class="field"><label>Default currency</label><select><option>USD — $</option><option>EUR — €</option><option>GBP — £</option><option>ZWL — Z$</option></select></div><div class="field"><label>Default timezone</label><select><option>UTC</option><option>Europe/London</option><option>Europe/Paris</option><option>America/New_York</option></select></div></div>
+              <button class="btn-sm" style="margin-top:18px" onclick="toast('Settings saved')">Save changes</button>
+            </div>
+            <div class="settings-panel" data-pane="branding" style="display:none">
+              <h2>Branding</h2>
+              <p class="lead">Customize how MODERN CULTURE appears across the storefront.</p>
+              <div class="field-row"><div class="field"><label>Brand tagline</label><input type="text" value="Contemporary luxury, considered."></div><div class="field"><label>Founded year</label><input type="number" value="2024"></div></div>
+              <div class="form-section"><h4>Logo</h4>
+                <div style="border:1px dashed var(--line-strong);padding:32px;text-align:center;color:var(--muted);font-size:13px;cursor:pointer">Upload logo · SVG recommended</div>
+              </div>
+              <div class="form-section"><h4>Colour palette</h4>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                  <div><div style="width:80px;height:80px;background:#0a0a0a;border:1px solid var(--line)"></div><div style="font-size:11px;text-align:center;margin-top:6px;letter-spacing:.06em">Ink #0a0a0a</div></div>
+                  <div><div style="width:80px;height:80px;background:#fafaf9;border:1px solid var(--line)"></div><div style="font-size:11px;text-align:center;margin-top:6px;letter-spacing:.06em">Bg #fafaf9</div></div>
+                  <div><div style="width:80px;height:80px;background:#a88b4a;border:1px solid var(--line)"></div><div style="font-size:11px;text-align:center;margin-top:6px;letter-spacing:.06em">Gold #a88b4a</div></div>
+                </div>
+              </div>
+              <button class="btn-sm" onclick="toast('Branding saved')">Save changes</button>
+            </div>
+            <div class="settings-panel" data-pane="payments" style="display:none">
+              <h2>Payment providers</h2>
+              <p class="lead">Configure your payment gateways.</p>
+              <div class="form-section">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line);margin-bottom:8px">
+                  <div><div style="font-weight:500">Stripe</div><div style="font-size:12px;color:var(--muted)">Cards · Apple Pay · Google Pay</div></div>
+                  <span class="status-pill delivered">Connected</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line);margin-bottom:8px">
+                  <div><div style="font-weight:500">PayPal</div><div style="font-size:12px;color:var(--muted)">PayPal balance &amp; cards</div></div>
+                  <span class="status-pill delivered">Connected</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line);margin-bottom:8px">
+                  <div><div style="font-weight:500">EcoCash</div><div style="font-size:12px;color:var(--muted)">Zimbabwe mobile money</div></div>
+                  <span class="status-pill processing">Pending verification</span>
+                </div>
+              </div>
+              <button class="btn-sm" onclick="toast('Provider added')">+ Add payment provider</button>
+            </div>
+            <div class="settings-panel" data-pane="shipping" style="display:none">
+              <h2>Shipping zones</h2>
+              <p class="lead">Define delivery rates by region.</p>
+              <table class="admin-table" style="margin-top:14px">
+                <thead><tr><th>Zone</th><th>Countries</th><th>Standard</th><th>Express</th></tr></thead>
+                <tbody>
+                  <tr><td>United Kingdom</td><td>GB</td><td>£8</td><td>£18</td></tr>
+                  <tr><td>EU</td><td>FR, DE, IT, ES, NL +18</td><td>€12</td><td>€24</td></tr>
+                  <tr><td>United States</td><td>US</td><td>$15</td><td>$32</td></tr>
+                  <tr><td>Africa</td><td>ZA, ZW, KE, NG +5</td><td>$22</td><td>$45</td></tr>
+                  <tr><td>Rest of world</td><td>All others</td><td>$28</td><td>$58</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="settings-panel" data-pane="tax" style="display:none">
+              <h2>Tax</h2>
+              <p class="lead">VAT and sales-tax handling.</p>
+              <div class="field-row"><div class="field"><label>Tax registration</label><input type="text" value="GB123456789"></div><div class="field"><label>Default tax rate</label><input type="text" value="20% VAT"></div></div>
+              <label style="display:flex;gap:10px;margin-top:14px;font-size:13px;color:var(--ink-soft)"><input type="checkbox" checked> Include tax in displayed prices (EU)</label>
+              <label style="display:flex;gap:10px;margin-top:8px;font-size:13px;color:var(--ink-soft)"><input type="checkbox" checked> Charge tax on shipping</label>
+            </div>
+            <div class="settings-panel" data-pane="emails" style="display:none">
+              <h2>Email &amp; notifications</h2>
+              <p class="lead">Manage transactional emails sent to customers.</p>
+              <table class="admin-table" style="margin-top:14px">
+                <thead><tr><th>Template</th><th>Trigger</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Order confirmation</td><td>Payment received</td><td><span class="status-pill delivered">Active</span></td></tr>
+                  <tr><td>Shipment notification</td><td>Order shipped</td><td><span class="status-pill delivered">Active</span></td></tr>
+                  <tr><td>Delivery confirmation</td><td>Order delivered</td><td><span class="status-pill delivered">Active</span></td></tr>
+                  <tr><td>Abandoned cart</td><td>24hr after cart left</td><td><span class="status-pill delivered">Active</span></td></tr>
+                  <tr><td>Welcome email</td><td>New account</td><td><span class="status-pill delivered">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="settings-panel" data-pane="security" style="display:none">
+              <h2>Security</h2>
+              <p class="lead">Authentication and access controls.</p>
+              <div class="form-section">
+                <h4>Two-factor authentication</h4>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line)">
+                  <div><div style="font-weight:500">Authenticator app</div><div style="font-size:12px;color:var(--muted)">Required for all admin accounts</div></div>
+                  <span class="status-pill delivered">Enforced</span>
+                </div>
+              </div>
+              <div class="form-section">
+                <h4>Session policy</h4>
+                <label style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line)">Session timeout <span>30 min inactive</span></label>
+                <label style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line)">Failed login lockout <span>5 attempts → 10 min</span></label>
+                <label style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px;color:var(--ink-soft)">Password minimum <span>12 characters</span></label>
+              </div>
+              <div class="form-section">
+                <h4>Active devices</h4>
+                <div style="padding:14px 16px;border:1px solid var(--line);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+                  <div><div style="font-weight:500">MacBook Pro · Safari</div><div style="font-size:12px;color:var(--muted)">London · Active now</div></div>
+                  <span style="font-size:11px;color:var(--ok);letter-spacing:.14em;text-transform:uppercase">This device</span>
+                </div>
+                <div style="padding:14px 16px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+                  <div><div style="font-weight:500">iPhone · Mobile Safari</div><div style="font-size:12px;color:var(--muted)">London · 2 hours ago</div></div>
+                  <button class="btn-sm danger" onclick="toast('Device signed out')">Revoke</button>
+                </div>
+              </div>
+            </div>
+            <div class="settings-panel" data-pane="team" style="display:none">
+              <h2>Team &amp; permissions</h2>
+              <p class="lead">Up to 4 admin accounts on the current plan.</p>
+              <table class="admin-table" style="margin-top:14px">
+                <thead><tr><th>Member</th><th>Email</th><th>Role</th><th>2FA</th><th>Last active</th><th></th></tr></thead>
+                <tbody id="team-tbody"></tbody>
+              </table>
+              <button class="btn-sm" style="margin-top:14px" onclick="toast('Invite sent')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Invite team member</button>
+              <p style="font-size:11px;color:var(--muted);margin-top:14px">Roles: Super Admin (full access) · Admin (no billing) · Manager (orders, products) · Customer Support (orders, customers) · Warehouse Staff (inventory, orders) · Marketing (discounts, content) · Finance (orders, payments, reports)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Product edit drawer -->
+<aside class="edit-drawer" id="product-drawer">
+  <div class="edit-drawer-head">
+    <h3 id="pd-title">Add product</h3>
+    <button class="icon-btn" onclick="closeProductDrawer()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="edit-drawer-body">
+    <div class="form-section">
+      <h4>General</h4>
+      <div class="field-row"><div class="field"><label>Product name</label><input type="text" id="pd-name"></div><div class="field"><label>SKU</label><input type="text" id="pd-sku" placeholder="Auto-generated"></div></div>
+      <div class="field-row"><div class="field"><label>Category</label><select id="pd-cat"><option value="women">Women</option><option value="men">Men</option><option value="shoes">Shoes</option><option value="accessories">Accessories</option></select></div><div class="field"><label>Status</label><select id="pd-status"><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select></div></div>
+    </div>
+    <div class="form-section">
+      <h4>Pricing</h4>
+      <div class="field-row"><div class="field"><label>Price (USD)</label><input type="number" id="pd-price" placeholder="0.00"></div><div class="field"><label>Sale price (optional)</label><input type="number" id="pd-sale" placeholder="0.00"></div></div>
+    </div>
+    <div class="form-section">
+      <h4>Inventory</h4>
+      <div class="field-row"><div class="field"><label>Stock quantity</label><input type="number" id="pd-stock" placeholder="0"></div><div class="field"><label>Sizes (comma-separated)</label><input type="text" id="pd-sizes" placeholder="XS, S, M, L, XL"></div></div>
+    </div>
+    <div class="form-section">
+      <h4>Description</h4>
+      <div class="field-row single"><div class="field"><textarea id="pd-desc" rows="4" style="padding:14px;border:1px solid var(--line-strong);background:transparent;font-family:inherit;font-size:14px;color:var(--ink);outline:none;resize:vertical" placeholder="Describe the piece, materials, fit, and craftsmanship…"></textarea></div></div>
+    </div>
+    <div class="form-section">
+      <h4>Media</h4>
+      <div style="border:1px dashed var(--line-strong);padding:32px;text-align:center;color:var(--muted);font-size:13px;cursor:pointer">Drop images here or click to upload · PNG, JPG up to 10MB</div>
+    </div>
+  </div>
+  <div class="edit-drawer-foot">
+    <button class="btn-sm ghost" onclick="closeProductDrawer()">Cancel</button>
+    <button class="btn-sm" onclick="saveProduct()">Save product</button>
+  </div>
+</aside>
+
+<!-- Order edit drawer -->
+<aside class="edit-drawer" id="order-drawer">
+  <div class="edit-drawer-head">
+    <h3 id="od-title">Order details</h3>
+    <button class="icon-btn" onclick="closeOrderDrawer()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="edit-drawer-body" id="od-body"></div>
+  <div class="edit-drawer-foot">
+    <button class="btn-sm ghost" onclick="closeOrderDrawer()">Close</button>
+    <button class="btn-sm danger" onclick="toast('Refund initiated')">Refund</button>
+    <button class="btn-sm" onclick="toast('Status updated · email sent to customer')">Save</button>
+  </div>
+</aside>
+
+<!-- Session expiry warning -->
+<div class="session-warning" id="session-warning">
+  <strong>Session expiring soon</strong>
+  You'll be signed out in 2 minutes due to inactivity.
+  <button onclick="extendSession()">Stay signed in</button>
+</div>
+
+<!-- ============================================================
+     Footer
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">MODERN CULTURE<small>EST. 2024</small></div>
+        <p>Contemporary luxury, considered. From the atelier &mdash; with care, conscience and a quiet kind of confidence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a onclick="goView('plp','women')">Women</a>
+        <a onclick="goView('plp','men')">Men</a>
+        <a onclick="goView('plp','shoes')">Shoes</a>
+        <a onclick="goView('plp','accessories')">Accessories</a>
+        <a onclick="goView('plp','new')">New arrivals</a>
+        <a onclick="goView('plp','sale')">Sale</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a>Contact us</a>
+        <a>Shipping policy</a>
+        <a>Returns &amp; exchanges</a>
+        <a>Size guide</a>
+        <a>Order tracking</a>
+        <a>FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>The house</h4>
+        <a>Our story</a>
+        <a>Sustainability</a>
+        <a>Careers</a>
+        <a>Press</a>
+        <a>Store locator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a>Privacy policy</a>
+        <a>Cookie policy</a>
+        <a>Terms of service</a>
+        <a>Accessibility</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MODERN CULTURE. All rights reserved.</div>
+      <div class="socials">
+        <a aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+        <a aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v10M9 14l3 3 3-3"/></svg></a>
+        <a aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10a4 4 0 1 1-4-4M14 4c0 3 2 5 5 5"/></svg></a>
+        <a aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a>
+      </div>
+      <div class="payments">
+        <span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>ECOCASH</span><span>APPLE PAY</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     Cart drawer
+     ============================================================ -->
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-head">
+    <h3>Your bag <span id="cart-count-2" style="font-family:var(--sans);font-size:14px;color:var(--muted);font-weight:400;margin-left:8px">0 items</span></h3>
+    <button class="icon-btn" onclick="closeCart()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+    <div class="cart-row"><span>Shipping</span><span>Calculated at checkout</span></div>
+    <div class="cart-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <button class="btn" onclick="goView('checkout');closeCart()">Checkout securely →</button>
+    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px;letter-spacing:.06em">Complimentary returns within 30 days.</p>
+  </div>
+</aside>
+
+<!-- ============================================================
+     Auth modal
+     ============================================================ -->
+<div class="auth-modal" id="auth-modal" onclick="if(event.target.id==='auth-modal')closeAuth()">
+  <div class="card">
+    <button class="close icon-btn" onclick="closeAuth()" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h2 id="auth-title">Welcome back.</h2>
+    <p class="sub" id="auth-sub">Sign in to access your account, wishlist and orders.</p>
+    <div class="auth-tabs">
+      <div class="auth-tab active" onclick="switchAuth('login',this)">Sign in</div>
+      <div class="auth-tab" onclick="switchAuth('register',this)">Register</div>
+    </div>
+    <form id="auth-form" onsubmit="event.preventDefault();toast('Authenticated — welcome back.');closeAuth()">
+      <input id="auth-name" type="text" placeholder="Full name" style="display:none">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <input id="auth-confirm" type="password" placeholder="Confirm password" style="display:none">
+      <button class="btn" type="submit" id="auth-submit">Sign in →</button>
+    </form>
+    <div class="alt">
+      <span id="auth-forgot"><a onclick="toast('Reset link sent.')">Forgot password?</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- Zoom modal -->
+<div class="zoom-modal" id="zoom-modal" onclick="closeZoom()"><img id="zoom-img" alt=""></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Saved</div>
+
+<!-- ============================================================
+     JavaScript — single-page navigation, state, interactions
+     ============================================================ -->
+<script>
+/* ----------- Product catalog ----------- */
+const PRODUCTS = [
+  {id:'p1', name:'The Atelier Coat', category:'women', price:790, sale:null, sizes:['XS','S','M','L'], color:'Camel',
+    main:'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80','https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80','https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80','https://images.unsplash.com/photo-1485518882345-15568b007407?w=1200&q=80'],
+    desc:'A double-faced cashmere blend coat, fully lined and finished by hand in Italy. Cut for an oversized, fluid silhouette that drapes effortlessly over tailoring or knitwear.'},
+  {id:'p2', name:'Soft Wool Trouser', category:'women', price:420, sale:null, sizes:['XS','S','M','L'], color:'Charcoal',
+    main:'https://images.unsplash.com/photo-1485518882345-15568b007407?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1485518882345-15568b007407?w=1200&q=80','https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1200&q=80','https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80'],
+    desc:'A wide-leg trouser cut from Italian virgin wool. Pressed front pleats give shape; the elasticated back waistband provides quiet comfort.'},
+  {id:'p3', name:'Cashmere Crew', category:'women', price:400, sale:null, sizes:['XS','S','M','L','XL'], color:'Ivory',
+    main:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1485518882345-15568b007407?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1200&q=80','https://images.unsplash.com/photo-1485518882345-15568b007407?w=1200&q=80'],
+    desc:'Pure Mongolian cashmere, knit on whole-garment looms for a seamless silhouette and exceptional softness.'},
+  {id:'p4', name:'Linen Slip Dress', category:'women', price:340, sale:{from:480}, sizes:['XS','S','M','L'], color:'Sand',
+    main:'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=80','https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=1200&q=80'],
+    desc:'A bias-cut slip in heavy washed linen. Adjustable straps; falls fluidly from the bust to mid-calf.'},
+  {id:'p5', name:'Unstructured Blazer', category:'men', price:680, sale:null, sizes:['46','48','50','52'], color:'Stone',
+    main:'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1617137968427-85924c800a22?w=1200&q=80','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=80'],
+    desc:'A deconstructed blazer in lightweight wool-linen. Soft shoulders, patch pockets, half-canvassed for a relaxed yet refined hand.'},
+  {id:'p6', name:'Heavy Cotton Shirt', category:'men', price:240, sale:null, sizes:['S','M','L','XL'], color:'White',
+    main:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80','https://images.unsplash.com/photo-1617137968427-85924c800a22?w=1200&q=80'],
+    desc:'A workwear-inspired shirt in heavyweight Japanese cotton oxford. Mother-of-pearl buttons; relaxed through the body.'},
+  {id:'p7', name:'Pleated Wool Trouser', category:'men', price:380, sale:null, sizes:['28','30','32','34','36'], color:'Charcoal',
+    main:'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=80'],
+    desc:'A double-pleated trouser with a clean drape. Cut from a four-season Italian wool.'},
+  {id:'p8', name:'Linen Camp Shirt', category:'men', price:220, sale:{from:280}, sizes:['S','M','L','XL'], color:'Olive',
+    main:'https://images.unsplash.com/photo-1622445275576-721325763afe?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1542327897-d73f4005b533?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1622445275576-721325763afe?w=1200&q=80'],
+    desc:'A short-sleeve camp shirt in heavy Belgian linen. An open-spread collar and a relaxed drop-shoulder cut.'},
+  {id:'p9', name:'Leather Derby', category:'shoes', price:590, sale:null, sizes:['40','41','42','43','44'], color:'Black',
+    main:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=1200&q=80','https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=1200&q=80'],
+    desc:'A four-eyelet derby crafted in Italy from polished calfskin. Goodyear-welted; leather sole.'},
+  {id:'p10', name:'Suede Loafer', category:'shoes', price:520, sale:null, sizes:['39','40','41','42','43','44'], color:'Tan',
+    main:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=1200&q=80'],
+    desc:'Hand-finished suede loafers with a soft moccasin construction and a tonal leather sole.'},
+  {id:'p11', name:'White Trainer', category:'shoes', price:380, sale:null, sizes:['39','40','41','42','43'], color:'White',
+    main:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80'],
+    desc:'A minimal court trainer in polished Italian leather. Rubber cup-sole, removable cushioned footbed.'},
+  {id:'p12', name:'Silk Scarf', category:'accessories', price:180, sale:null, sizes:['90×90'], color:'Ivory',
+    main:'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=1200&q=80'],
+    desc:'A printed silk twill scarf hand-rolled in France. 90×90 cm; signature house print.'},
+  {id:'p13', name:'Leather Belt', category:'accessories', price:220, sale:null, sizes:['80','85','90','95'], color:'Cognac',
+    main:'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=1200&q=80'],
+    desc:'A 25-mm dress belt in full-grain Tuscan leather with a brushed brass buckle.'},
+  {id:'p14', name:'Structured Tote', category:'accessories', price:740, sale:null, sizes:['One Size'], color:'Black',
+    main:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1591561954555-607968c989ab?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1200&q=80'],
+    desc:'A clean-lined tote in vegetable-tanned leather. Suede-lined; magnetic closure.'},
+  {id:'p15', name:'Cashmere Beanie', category:'accessories', price:140, sale:{from:200}, sizes:['One Size'], color:'Charcoal',
+    main:'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=1200&q=80'],
+    desc:'A finely ribbed cashmere beanie. Six-ply yarn; turned brim.'},
+  {id:'p16', name:'Editorial Knit', category:'women', price:520, sale:null, sizes:['XS','S','M','L'], color:'Cream',
+    main:'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=800&q=80',
+    alt:'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+    gallery:['https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=1200&q=80'],
+    desc:'A boxy chunky-knit pullover in undyed merino. Drop shoulders; ribbed cuffs.'},
+];
+
+/* ----------- State ----------- */
+let cart = [];
+let wishlist = new Set();
+let currentView = 'home';
+let currentPdpId = null;
+
+/* ----------- Helpers ----------- */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+const money = n => '$' + n.toLocaleString('en-US', {maximumFractionDigits:0});
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* ----------- Product card rendering ----------- */
+function cardHTML(p){
+  const sale = p.sale ? `<div class="pc-badge sale">Sale</div>` : (p.category==='new'?`<div class="pc-badge">New</div>`:'');
+  const priceHTML = p.sale
+    ? `<div class="pc-price sale-price"><s>${money(p.sale.from)}</s><strong>${money(p.price)}</strong></div>`
+    : `<div class="pc-price">${money(p.price)}</div>`;
+  return `<div class="product-card" onclick="goPDP('${p.id}')">
+    <div class="pc-image">
+      ${sale}
+      <button class="pc-wishlist ${wishlist.has(p.id)?'active':''}" onclick="event.stopPropagation();toggleWish('${p.id}',this)" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <img class="main" loading="lazy" src="${p.main}" alt="${p.name}">
+      <img class="alt" loading="lazy" src="${p.alt}" alt="${p.name} alternate">
+      <div class="pc-quick" onclick="event.stopPropagation();addToCart('${p.id}','${p.sizes[Math.min(1,p.sizes.length-1)]}')">+ Add to bag</div>
+    </div>
+    <div class="pc-name">${p.name}</div>
+    <div class="pc-meta">${priceHTML}</div>
+    <div class="pc-sizes">${p.sizes.join(' · ')}</div>
+  </div>`;
+}
+
+function renderGrid(targetId, items){
+  $(targetId).innerHTML = items.map(cardHTML).join('');
+}
+
+function bootHome(){
+  renderGrid('#home-grid', PRODUCTS.slice(0,8));
+  renderGrid('#best-grid', PRODUCTS.slice(4,12));
+}
+
+/* ----------- Views ----------- */
+function goView(view, cat){
+  $$('.view').forEach(v=>v.classList.remove('active'));
+  $('#view-'+view).classList.add('active');
+  currentView = view;
+  window.scrollTo({top:0,behavior:'instant'});
+
+  if(view==='plp'){
+    const titles = {women:'Women', men:'Men', shoes:'Shoes', accessories:'Accessories', new:'New Arrivals', sale:'Sale'};
+    const descs = {
+      women:'Soft tailoring, considered knits and the new silhouette — engineered for movement, designed to last.',
+      men:'Quiet essentials and elevated workwear, cut with intent.',
+      shoes:'Handcrafted footwear from our Italian and Portuguese ateliers.',
+      accessories:'The finishing details — finely made, quietly extraordinary.',
+      new:'The latest from the atelier. Shop the newest pieces, just landed.',
+      sale:'A considered edit of pieces from past seasons, at reduced prices.'
+    };
+    $('#plp-title').textContent = titles[cat] || 'Shop';
+    $('#plp-crumb').textContent = titles[cat] || 'Shop';
+    $('#plp-desc').textContent = descs[cat] || '';
+    let items;
+    if(cat==='new') items = PRODUCTS.slice(0,12);
+    else if(cat==='sale') items = PRODUCTS.filter(p=>p.sale);
+    else items = PRODUCTS.filter(p=>p.category===cat);
+    if(items.length<4) items = items.concat(PRODUCTS.slice(0,8));
+    renderGrid('#plp-grid', items);
+    $('#plp-count').textContent = items.length + ' pieces';
+    $$('.nav-cats a').forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
+  }
+
+  if(view==='checkout'){
+    renderCheckoutSummary();
+  }
+}
+
+/* ----------- PDP ----------- */
+function goPDP(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  currentPdpId = id;
+  $('#pdp-gallery').innerHTML = p.gallery.map((src,i)=>`<div class="img-wrap ${i===0?'g-main':''}" onclick="openZoom('${src}')"><img loading="lazy" src="${src}" alt="${p.name}"></div>`).join('');
+  const priceHTML = p.sale
+    ? `<div class="price"><s style="color:var(--muted)">${money(p.sale.from)}</s> &nbsp; <strong style="color:var(--sale)">${money(p.price)}</strong></div>`
+    : `<div class="price">${money(p.price)}</div>`;
+  $('#pdp-info').innerHTML = `
+    <div class="crumb"><span onclick="goView('home')" style="cursor:pointer">Home</span> / <span onclick="goView('plp','${p.category}')" style="cursor:pointer;text-transform:capitalize">${p.category}</span> / ${p.name}</div>
+    <h1>${p.name}</h1>
+    ${priceHTML}
+    <div class="stars">★★★★★ <small>4.8 · 248 reviews</small></div>
+    <p class="desc">${p.desc}</p>
+
+    <div class="pdp-section">
+      <div class="pdp-label">Colour · <span style="color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:400">${p.color}</span></div>
+      <div style="display:flex;gap:8px">
+        <div class="sw active" style="background:#0a0a0a;width:32px;height:32px"></div>
+        <div class="sw" style="background:#d4cdbd;width:32px;height:32px"></div>
+        <div class="sw" style="background:#7a3030;width:32px;height:32px"></div>
+      </div>
+    </div>
+
+    <div class="pdp-section">
+      <div class="pdp-label">Size <a style="float:right;font-size:11px;text-decoration:underline;letter-spacing:.08em;text-transform:none;color:var(--ink-soft);cursor:pointer" onclick="toast('Size guide')">Size guide</a></div>
+      <div class="size-row">
+        ${p.sizes.map((s,i)=>`<button onclick="selectSize(this)" ${i===p.sizes.length-1?'disabled':''}>${s}</button>`).join('')}
+      </div>
+    </div>
+
+    <div class="pdp-actions">
+      <button class="btn" onclick="addToCart('${p.id}', getSelectedSize())">Add to bag — ${money(p.price)}</button>
+      <button class="wish ${wishlist.has(p.id)?'active':''}" onclick="toggleWish('${p.id}',this)" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+    </div>
+
+    <div class="shipping-row">
+      <div><svg viewBox="0 0 24 24"><path d="M3 7h13l3 4v6h-3M3 7v10h3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Free shipping over $200</div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>30-day returns</div>
+      <div><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure checkout</div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-item open">
+        <button class="accordion-head" onclick="toggleAcc(this)">Composition &amp; care <span class="chev">+</span></button>
+        <div class="accordion-body">85% virgin wool, 15% cashmere. Lining: 100% viscose. Dry clean only. Made in Italy with traceable materials.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-head" onclick="toggleAcc(this)">Shipping &amp; returns <span class="chev">+</span></button>
+        <div class="accordion-body">Complimentary standard shipping on orders over $200. Express delivery available. 30-day returns, free in most regions.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-head" onclick="toggleAcc(this)">The making <span class="chev">+</span></button>
+        <div class="accordion-body">Cut and sewn in a family-run atelier outside Florence. Each piece is hand-finished and quality-checked by our in-house master.</div>
+      </div>
+    </div>
+  `;
+  renderGrid('#pdp-related', PRODUCTS.filter(x=>x.id!==id).slice(0,4));
+  goView('pdp');
+}
+function selectSize(btn){
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function getSelectedSize(){
+  const a = $('.size-row button.active');
+  return a ? a.textContent : null;
+}
+function toggleAcc(btn){
+  btn.parentElement.classList.toggle('open');
+  btn.querySelector('.chev').textContent = btn.parentElement.classList.contains('open') ? '−' : '+';
+}
+
+/* ----------- Hero carousel ----------- */
+let heroIdx = 0;
+function heroGo(i){
+  const slides = $$('.hero-slide');
+  const dots = $$('#hero-dots button');
+  slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+  dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
+  heroIdx = i;
+}
+function heroNext(){heroGo((heroIdx+1)%3)}
+function heroPrev(){heroGo((heroIdx+2)%3)}
+setInterval(heroNext, 6500);
+
+/* ----------- Cart ----------- */
+function addToCart(id, size){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  if(!size) size = p.sizes[0];
+  const key = id + '-' + size;
+  const existing = cart.find(x=>x.key===key);
+  if(existing) existing.qty++;
+  else cart.push({key, id, size, qty:1, ...p});
+  renderCart();
+  openCart();
+}
+function removeCart(key){
+  cart = cart.filter(x=>x.key!==key);
+  renderCart();
+}
+function changeQty(key, d){
+  const i = cart.find(x=>x.key===key);
+  if(!i) return;
+  i.qty = Math.max(1, i.qty+d);
+  renderCart();
+}
+function renderCart(){
+  const items = $('#cart-items');
+  if(cart.length===0){
+    items.innerHTML = `<div class="cart-empty">
+      <svg viewBox="0 0 24 24"><path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5H9.5a2 2 0 0 1-2-1.5L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+      <p>Your bag is empty.</p>
+      <button class="btn" style="margin-top:18px" onclick="closeCart()">Continue shopping</button>
+    </div>`;
+  } else {
+    items.innerHTML = cart.map(i=>`
+      <div class="cart-item">
+        <img src="${i.main}" alt="${i.name}">
+        <div>
+          <div class="ci-name">${i.name}</div>
+          <div class="ci-meta">Size ${i.size} · ${i.color}</div>
+          <div class="ci-qty">
+            <button onclick="changeQty('${i.key}',-1)">−</button>
+            <span>${i.qty}</span>
+            <button onclick="changeQty('${i.key}',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <div class="ci-price">${money(i.price * i.qty)}</div>
+          <a class="ci-remove" onclick="removeCart('${i.key}')">Remove</a>
+        </div>
+      </div>
+    `).join('');
+  }
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty, 0);
+  $('#cart-subtotal').textContent = money(subtotal);
+  $('#cart-total').textContent = money(subtotal);
+  $('#cart-count').textContent = cart.reduce((s,i)=>s+i.qty,0);
+  $('#cart-count-2').textContent = cart.reduce((s,i)=>s+i.qty,0) + ' items';
+}
+function openCart(){$('#cart-drawer').classList.add('open');$('#scrim').classList.add('open')}
+function closeCart(){$('#cart-drawer').classList.remove('open');$('#scrim').classList.remove('open')}
+
+/* ----------- Wishlist ----------- */
+function toggleWish(id, btn){
+  if(wishlist.has(id)){wishlist.delete(id);btn.classList.remove('active');toast('Removed from wishlist')}
+  else{wishlist.add(id);btn.classList.add('active');toast('Added to wishlist')}
+}
+
+/* ----------- Checkout summary ----------- */
+function renderCheckoutSummary(){
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty, 0);
+  const tax = Math.round(subtotal*0.08);
+  $('#checkout-items').innerHTML = cart.length===0
+    ? '<p style="color:var(--muted);padding:24px 0">Your bag is empty.</p>'
+    : cart.map(i=>`<div class="ci-mini">
+        <img src="${i.main}" alt="">
+        <div><div class="nm">${i.name}</div><div class="mt">Size ${i.size} · Qty ${i.qty}</div></div>
+        <div class="pr">${money(i.price*i.qty)}</div>
+      </div>`).join('');
+  $('#co-subtotal').textContent = money(subtotal);
+  $('#co-tax').textContent = money(tax);
+  $('#co-total').textContent = money(subtotal+tax);
+}
+function selectPay(el, e){
+  if(e) e.stopPropagation();
+  Array.from(el.parentElement.children).forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+function placeOrder(){
+  if(cart.length===0){toast('Your bag is empty');return}
+  toast('Order placed — thank you ✦');
+  cart = [];
+  renderCart();
+  setTimeout(()=>goView('home'), 800);
+}
+
+/* ----------- Auth ----------- */
+function openAuth(){$('#auth-modal').classList.add('open')}
+function closeAuth(){$('#auth-modal').classList.remove('open')}
+function switchAuth(mode, tab){
+  $$('.auth-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  if(mode==='register'){
+    $('#auth-title').textContent = 'Create an account.';
+    $('#auth-sub').textContent = 'Join Modern Culture for previews, private events and faster checkout.';
+    $('#auth-name').style.display='block';
+    $('#auth-confirm').style.display='block';
+    $('#auth-submit').textContent='Create account →';
+    $('#auth-forgot').style.display='none';
+  } else {
+    $('#auth-title').textContent = 'Welcome back.';
+    $('#auth-sub').textContent = 'Sign in to access your account, wishlist and orders.';
+    $('#auth-name').style.display='none';
+    $('#auth-confirm').style.display='none';
+    $('#auth-submit').textContent='Sign in →';
+    $('#auth-forgot').style.display='block';
+  }
+}
+
+/* ----------- Theme ----------- */
+function toggleTheme(){
+  const html = document.documentElement;
+  const next = html.dataset.theme==='dark' ? 'light' : 'dark';
+  html.dataset.theme = next;
+  $('#theme-icon').innerHTML = next==='dark'
+    ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'
+    : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>';
+}
+
+/* ----------- Mobile menu ----------- */
+function toggleMobileMenu(){$('#mobile-menu').classList.toggle('open')}
+
+/* ----------- Zoom ----------- */
+function openZoom(src){$('#zoom-img').src=src;$('#zoom-modal').classList.add('open')}
+function closeZoom(){$('#zoom-modal').classList.remove('open')}
+
+/* ----------- Reveal on scroll ----------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+}, {threshold:0.12});
+
+/* ============================================================
+   ADMIN AUTHENTICATION & SESSION
+   ============================================================
+   IMPORTANT: To change the admin password, edit ADMIN_ACCOUNTS below.
+   In production (Phase 2), this will be replaced with Firebase Auth.
+   ============================================================ */
+
+const ADMIN_ACCOUNTS = [
+  // email                          password              name        role
+  { email: 'admin@modernculture.co',  password: 'modernculture2026', name: 'Atelier',   role: 'Super Admin' },
+  { email: 'manager@modernculture.co',password: 'modernculture2026', name: 'Manager',   role: 'Manager' },
+  { email: 'support@modernculture.co',password: 'modernculture2026', name: 'Support',   role: 'Customer Support' },
+  { email: 'finance@modernculture.co',password: 'modernculture2026', name: 'Finance',   role: 'Finance' },
+];
+const LOGIN_MAX_ATTEMPTS = 5;
+const LOCKOUT_MINUTES = 10;
+const SESSION_MINUTES = 30;
+const WARNING_MINUTES = 2;            // warn 2 min before expiry
+
+let currentAdmin = null;              // { email, name, role, loggedInAt }
+let pendingLogin = null;              // holds account during 2FA step
+let sessionTimer = null;
+let warnTimer = null;
+let activityLog = [];
+
+function loadAdminState(){
+  try {
+    const raw = sessionStorage.getItem('mc-admin');
+    if(!raw) return null;
+    const data = JSON.parse(raw);
+    // expire if older than session length
+    if(Date.now() - data.lastActivity > SESSION_MINUTES * 60 * 1000) {
+      sessionStorage.removeItem('mc-admin');
+      return null;
+    }
+    return data;
+  } catch { return null; }
+}
+function saveAdminState(){
+  if(!currentAdmin) return;
+  sessionStorage.setItem('mc-admin', JSON.stringify({
+    ...currentAdmin,
+    lastActivity: Date.now()
+  }));
+}
+
+function getLockoutState(){
+  try { return JSON.parse(localStorage.getItem('mc-admin-lock') || '{}'); }
+  catch { return {}; }
+}
+function setLockoutState(s){
+  localStorage.setItem('mc-admin-lock', JSON.stringify(s));
+}
+function isLockedOut(){
+  const s = getLockoutState();
+  if(!s.lockedUntil) return false;
+  if(Date.now() < s.lockedUntil) return true;
+  setLockoutState({attempts: 0});
+  return false;
+}
+function recordFailedAttempt(){
+  const s = getLockoutState();
+  const attempts = (s.attempts || 0) + 1;
+  if(attempts >= LOGIN_MAX_ATTEMPTS){
+    setLockoutState({ attempts, lockedUntil: Date.now() + LOCKOUT_MINUTES*60*1000 });
+    return { locked: true, attempts };
+  }
+  setLockoutState({ attempts });
+  return { locked: false, attempts, remaining: LOGIN_MAX_ATTEMPTS - attempts };
+}
+function clearLockout(){ setLockoutState({attempts:0}); }
+
+function showLockoutBanner(){
+  const s = getLockoutState();
+  const banner = $('#lockout-banner');
+  if(s.lockedUntil && Date.now() < s.lockedUntil){
+    const mins = Math.ceil((s.lockedUntil - Date.now()) / 60000);
+    $('#lockout-msg').textContent = `Too many failed attempts. Try again in ${mins} minute${mins===1?'':'s'}.`;
+    banner.style.display = 'block';
+    $('#login-submit').disabled = true;
+  } else {
+    banner.style.display = 'none';
+    $('#login-submit').disabled = false;
+  }
+}
+
+function attemptLogin(){
+  if(isLockedOut()){ showLockoutBanner(); return; }
+  const email = $('#login-email').value.trim().toLowerCase();
+  const password = $('#login-password').value;
+  const errEl = $('#login-error');
+  const account = ADMIN_ACCOUNTS.find(a => a.email.toLowerCase() === email && a.password === password);
+
+  if(!account){
+    const r = recordFailedAttempt();
+    if(r.locked){
+      showLockoutBanner();
+      errEl.classList.remove('show');
+      logActivity('danger', 'System', `Account locked after ${LOGIN_MAX_ATTEMPTS} failed attempts for ${email || 'unknown'}`);
+    } else {
+      errEl.textContent = `Incorrect credentials. ${r.remaining} attempt${r.remaining===1?'':'s'} remaining before lockout.`;
+      errEl.classList.add('show');
+    }
+    return;
+  }
+
+  // Credentials OK — go to 2FA step
+  pendingLogin = account;
+  errEl.classList.remove('show');
+  $('#login-form').style.display = 'none';
+  $('#twofa-divider').style.display = 'block';
+  $('#twofa-section').style.display = 'block';
+  $('#login-title').textContent = 'Verify your identity.';
+  $('#login-sub').textContent = `Welcome back, ${account.name}. Enter the 6-digit code from your authenticator app.`;
+  setTimeout(()=> $('#twofa-inputs input')[0].focus(), 100);
+}
+
+function verify2FA(){
+  const inputs = $$('#twofa-inputs input');
+  const code = inputs.map(i => i.value).join('');
+  if(code.length < 6){
+    toast('Enter all 6 digits');
+    return;
+  }
+  // Demo: accept any 6-digit code. In Phase 2, verify against TOTP.
+  if(!pendingLogin) return;
+  currentAdmin = {
+    email: pendingLogin.email,
+    name: pendingLogin.name,
+    role: pendingLogin.role,
+    loggedInAt: Date.now()
+  };
+  pendingLogin = null;
+  clearLockout();
+  saveAdminState();
+  logActivity('ok', currentAdmin.name, 'Signed in to admin');
+  enterAdmin();
+}
+
+function logout(){
+  if(currentAdmin) logActivity('warn', currentAdmin.name, 'Signed out');
+  currentAdmin = null;
+  sessionStorage.removeItem('mc-admin');
+  if(sessionTimer) clearTimeout(sessionTimer);
+  if(warnTimer) clearTimeout(warnTimer);
+  $('#session-warning').classList.remove('show');
+  // Reset login form
+  $('#login-form').reset();
+  $('#login-form').style.display = 'flex';
+  $('#twofa-divider').style.display = 'none';
+  $('#twofa-section').style.display = 'none';
+  $('#twofa-inputs').querySelectorAll('input').forEach(i=>i.value='');
+  $('#login-title').textContent = 'Sign in to your atelier.';
+  $('#login-sub').textContent = 'Authorised personnel only. All access is logged and monitored.';
+  goView('home');
+  toast('Signed out');
+  // Clear hash
+  if(location.hash) history.replaceState(null,'',location.pathname);
+}
+
+function enterAdmin(){
+  // Personalize
+  $('#user-name').textContent = currentAdmin.name;
+  $('#user-pop-name').textContent = currentAdmin.name;
+  $('#user-avatar').textContent = currentAdmin.name.charAt(0).toUpperCase();
+  $$('.user-role').forEach(el => el.textContent = currentAdmin.role);
+  const h = new Date().getHours();
+  const greet = h<12 ? 'Good morning' : h<18 ? 'Good afternoon' : 'Good evening';
+  $('#greet').textContent = `${greet}, ${currentAdmin.name}.`;
+
+  // Render all module data
+  renderAdminProducts();
+  renderAdminOrders();
+  renderInventory();
+  renderCustomers();
+  renderTeam();
+  renderActivityFeed();
+  adminGo('dashboard');
+
+  // Switch to admin view + set URL hash
+  $$('.view').forEach(v => v.classList.remove('active'));
+  $('#view-admin').classList.add('active');
+  history.replaceState(null,'','#admin');
+
+  resetSessionTimer();
+}
+
+function resetSessionTimer(){
+  if(sessionTimer) clearTimeout(sessionTimer);
+  if(warnTimer) clearTimeout(warnTimer);
+  $('#session-warning').classList.remove('show');
+  // schedule warning
+  warnTimer = setTimeout(() => {
+    $('#session-warning').classList.add('show');
+  }, (SESSION_MINUTES - WARNING_MINUTES) * 60 * 1000);
+  // schedule expiry
+  sessionTimer = setTimeout(() => {
+    toast('Session expired');
+    logout();
+  }, SESSION_MINUTES * 60 * 1000);
+  saveAdminState();
+}
+function extendSession(){
+  $('#session-warning').classList.remove('show');
+  resetSessionTimer();
+  toast('Session extended');
+}
+
+function togglePwd(){
+  const i = $('#login-password');
+  const b = $('.show-pwd');
+  if(i.type === 'password'){ i.type = 'text'; b.textContent = 'Hide'; }
+  else { i.type = 'password'; b.textContent = 'Show'; }
+}
+function forgotPassword(){
+  const email = $('#login-email').value.trim();
+  if(!email){ toast('Enter your email first'); return; }
+  toast(`Reset link sent to ${email}`);
+}
+
+// Wire up 2FA input auto-advance
+document.addEventListener('input', e => {
+  if(e.target.matches('#twofa-inputs input')){
+    if(e.target.value && e.target.nextElementSibling){
+      e.target.nextElementSibling.focus();
+    }
+  }
+});
+document.addEventListener('keydown', e => {
+  if(e.target.matches('#twofa-inputs input') && e.key==='Backspace' && !e.target.value && e.target.previousElementSibling){
+    e.target.previousElementSibling.focus();
+  }
+});
+
+/* ============================================================
+   ADMIN GATING — intercept /#admin
+   ============================================================ */
+function handleAdminHash(){
+  const wantsAdmin = location.hash === '#admin' || location.hash === '#admin-login';
+  if(!wantsAdmin) return false;
+
+  const session = loadAdminState();
+  if(session){
+    currentAdmin = session;
+    enterAdmin();
+  } else {
+    $$('.view').forEach(v => v.classList.remove('active'));
+    $('#view-admin-login').classList.add('active');
+    showLockoutBanner();
+    window.scrollTo({top:0});
+  }
+  return true;
+}
+
+/* ============================================================
+   ADMIN MODULE NAVIGATION
+   ============================================================ */
+function adminGo(section){
+  $$('.admin-section').forEach(s => s.classList.remove('active'));
+  $('#sec-'+section).classList.add('active');
+  $$('.admin-side a[data-section]').forEach(a => a.classList.toggle('active', a.dataset.section===section));
+  resetSessionTimer();
+}
+function settingsGo(pane, el){
+  $$('.settings-nav a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  $$('.settings-panel').forEach(p => p.style.display = p.dataset.pane===pane ? 'block' : 'none');
+}
+function togglePopover(id, e){
+  e.stopPropagation();
+  const wasOpen = $('#'+id).classList.contains('open');
+  $$('.popover').forEach(p => p.classList.remove('open'));
+  if(!wasOpen) $('#'+id).classList.add('open');
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('.popover') && !e.target.closest('.user-chip') && !e.target.closest('.icon-btn')){
+    $$('.popover').forEach(p => p.classList.remove('open'));
+  }
+});
+
+/* ============================================================
+   ADMIN MODULE: PRODUCTS
+   ============================================================ */
+// Augment PRODUCTS with admin fields
+PRODUCTS.forEach((p,i) => {
+  if(!p.sku) p.sku = 'MC-' + p.category.toUpperCase().charAt(0) + '-' + String(100 + i).padStart(3,'0');
+  if(p.stock === undefined) p.stock = Math.floor(Math.random()*40) + (p.sale ? 3 : 15);
+  if(!p.status) p.status = p.stock === 0 ? 'out-of-stock' : 'published';
+});
+
+function renderAdminProducts(){
+  const q = $('#product-search')?.value.toLowerCase() || '';
+  const fc = $('#product-filter-cat')?.value || '';
+  const fs = $('#product-filter-status')?.value || '';
+  const filtered = PRODUCTS.filter(p =>
+    (!q || p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q)) &&
+    (!fc || p.category === fc) &&
+    (!fs || p.status === fs)
+  );
+  $('#product-count').textContent = PRODUCTS.length;
+  const tbody = $('#admin-products-tbody');
+  if(!tbody) return;
+  tbody.innerHTML = filtered.length === 0
+    ? `<tr><td colspan="8"><div class="empty-state"><h3>No products match</h3><p>Try adjusting your filters.</p></div></td></tr>`
+    : filtered.map(p => `
+      <tr>
+        <td><input type="checkbox"></td>
+        <td><div class="pname"><img src="${p.main}" alt=""><div><div>${p.name}</div><div style="font-size:11px;color:var(--muted)">${p.color}</div></div></div></td>
+        <td style="font-family:monospace;font-size:12px">${p.sku}</td>
+        <td style="text-transform:capitalize">${p.category}</td>
+        <td>${money(p.price)}${p.sale?` <s style="color:var(--muted);font-size:11px">${money(p.sale.from)}</s>`:''}</td>
+        <td>${stockBar(p.stock)}</td>
+        <td><span class="status-pill ${p.status}">${p.status.replace('-',' ')}</span></td>
+        <td><div class="row-actions">
+          <button title="Edit" onclick="openProductDrawer('${p.id}')"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
+          <button title="Duplicate" onclick="toast('Product duplicated')"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          <button class="danger" title="Delete" onclick="deleteProduct('${p.id}')"><svg viewBox="0 0 24 24"><path d="M3 6h18M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+        </div></td>
+      </tr>
+    `).join('');
+}
+
+function stockBar(stock){
+  const max = 50;
+  const pct = Math.min(100, (stock/max)*100);
+  const cls = stock <= 5 ? 'critical' : stock <= 15 ? 'low' : '';
+  return `<span class="stock-bar ${cls}"><span style="width:${pct}%"></span></span>${stock}`;
+}
+
+let editingProductId = null;
+function openProductDrawer(id){
+  editingProductId = id;
+  if(id){
+    const p = PRODUCTS.find(x=>x.id===id);
+    if(!p) return;
+    $('#pd-title').textContent = 'Edit · ' + p.name;
+    $('#pd-name').value = p.name;
+    $('#pd-sku').value = p.sku;
+    $('#pd-cat').value = p.category;
+    $('#pd-status').value = p.status;
+    $('#pd-price').value = p.price;
+    $('#pd-sale').value = p.sale ? p.sale.from : '';
+    $('#pd-stock').value = p.stock;
+    $('#pd-sizes').value = p.sizes.join(', ');
+    $('#pd-desc').value = p.desc;
+  } else {
+    $('#pd-title').textContent = 'Add product';
+    ['pd-name','pd-sku','pd-price','pd-sale','pd-stock','pd-sizes','pd-desc'].forEach(id => $('#'+id).value = '');
+    $('#pd-cat').value = 'women';
+    $('#pd-status').value = 'draft';
+  }
+  $('#product-drawer').classList.add('open');
+}
+function closeProductDrawer(){
+  $('#product-drawer').classList.remove('open');
+  editingProductId = null;
+}
+function saveProduct(){
+  const name = $('#pd-name').value.trim();
+  if(!name){ toast('Product name is required'); return; }
+  const data = {
+    name,
+    category: $('#pd-cat').value,
+    status: $('#pd-status').value,
+    price: parseFloat($('#pd-price').value) || 0,
+    sale: parseFloat($('#pd-sale').value) ? { from: parseFloat($('#pd-sale').value) } : null,
+    stock: parseInt($('#pd-stock').value) || 0,
+    sizes: $('#pd-sizes').value.split(',').map(s=>s.trim()).filter(Boolean),
+    desc: $('#pd-desc').value,
+    sku: $('#pd-sku').value.trim() || 'MC-' + Date.now().toString().slice(-6),
+  };
+  if(editingProductId){
+    const p = PRODUCTS.find(x=>x.id===editingProductId);
+    Object.assign(p, data);
+    logActivity('ok', currentAdmin?.name || 'Admin', `Updated product · ${name}`);
+    toast('Product updated');
+  } else {
+    PRODUCTS.unshift({
+      id: 'p' + (PRODUCTS.length + 1),
+      color: 'Black',
+      main: 'https://images.unsplash.com/photo-1485518882345-15568b007407?w=800&q=80',
+      alt: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
+      gallery: ['https://images.unsplash.com/photo-1485518882345-15568b007407?w=1200&q=80'],
+      ...data
+    });
+    logActivity('ok', currentAdmin?.name || 'Admin', `Created product · ${name}`);
+    toast('Product saved');
+  }
+  closeProductDrawer();
+  renderAdminProducts();
+  renderInventory();
+}
+function deleteProduct(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  if(!confirm(`Delete "${p.name}"? This cannot be undone.`)) return;
+  const idx = PRODUCTS.findIndex(x=>x.id===id);
+  PRODUCTS.splice(idx,1);
+  logActivity('danger', currentAdmin?.name || 'Admin', `Deleted product · ${p.name}`);
+  toast('Product deleted');
+  renderAdminProducts();
+  renderInventory();
+}
+
+/* ============================================================
+   ADMIN MODULE: ORDERS
+   ============================================================ */
+const ORDERS = [
+  {id:'MC-10428', customer:'Aria L.', email:'aria@example.com', city:'London', items:2, total:612, payment:'stripe', status:'processing', date:'21 May 2026'},
+  {id:'MC-10427', customer:'Marcus T.', email:'marcus@example.com', city:'Berlin', items:1, total:1240, payment:'stripe', status:'pending', date:'21 May 2026'},
+  {id:'MC-10426', customer:'Sofia M.', email:'sofia@example.com', city:'Milan', items:3, total:842, payment:'paypal', status:'shipped', date:'21 May 2026'},
+  {id:'MC-10425', customer:'Tanaka K.', email:'tanaka@example.com', city:'Tokyo', items:1, total:298, payment:'stripe', status:'pending', date:'20 May 2026'},
+  {id:'MC-10424', customer:'Tendai M.', email:'tendai@example.com', city:'Harare', items:2, total:464, payment:'ecocash', status:'shipped', date:'20 May 2026'},
+  {id:'MC-10423', customer:'Élise R.', email:'elise@example.com', city:'Paris', items:4, total:1816, payment:'stripe', status:'refunded', date:'19 May 2026'},
+  {id:'MC-10422', customer:'Lin K.', email:'lin@example.com', city:'Singapore', items:2, total:920, payment:'stripe', status:'delivered', date:'18 May 2026'},
+  {id:'MC-10421', customer:'Diego F.', email:'diego@example.com', city:'Barcelona', items:1, total:340, payment:'paypal', status:'delivered', date:'18 May 2026'},
+  {id:'MC-10420', customer:'Yuki H.', email:'yuki@example.com', city:'Osaka', items:3, total:1120, payment:'stripe', status:'cancelled', date:'17 May 2026'},
+  {id:'MC-10419', customer:'Anna B.', email:'anna@example.com', city:'New York', items:5, total:2240, payment:'stripe', status:'delivered', date:'17 May 2026'},
+];
+
+function renderAdminOrders(){
+  const q = $('#order-search')?.value.toLowerCase() || '';
+  const fs = $('#order-filter-status')?.value || '';
+  const fp = $('#order-filter-pay')?.value || '';
+  const filtered = ORDERS.filter(o =>
+    (!q || o.id.toLowerCase().includes(q) || o.customer.toLowerCase().includes(q)) &&
+    (!fs || o.status === fs) &&
+    (!fp || o.payment === fp)
+  );
+  const tbody = $('#admin-orders-tbody');
+  if(!tbody) return;
+  tbody.innerHTML = filtered.length === 0
+    ? `<tr><td colspan="8"><div class="empty-state"><h3>No orders match</h3></div></td></tr>`
+    : filtered.map(o => `
+      <tr style="cursor:pointer" onclick="openOrderDrawer('${o.id}')">
+        <td style="font-family:monospace;color:var(--ink);font-weight:500">#${o.id}</td>
+        <td><div style="color:var(--ink);font-weight:500">${o.customer}</div><div style="font-size:11px;color:var(--muted)">${o.city}</div></td>
+        <td>${o.items}</td>
+        <td>${money(o.total)}</td>
+        <td style="text-transform:uppercase;font-size:11px;letter-spacing:.14em">${o.payment}</td>
+        <td><span class="status-pill ${o.status}">${o.status}</span></td>
+        <td>${o.date}</td>
+        <td><div class="row-actions" onclick="event.stopPropagation()">
+          <button title="View"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button title="Invoice" onclick="toast('Invoice generated')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
+        </div></td>
+      </tr>
+    `).join('');
+}
+
+function openOrderDrawer(id){
+  const o = ORDERS.find(x=>x.id===id);
+  if(!o) return;
+  $('#od-title').textContent = 'Order #' + o.id;
+  $('#od-body').innerHTML = `
+    <div class="form-section">
+      <h4>Customer</h4>
+      <div style="padding:14px;background:var(--bg-elev);border:1px solid var(--line)">
+        <div style="font-weight:500;margin-bottom:4px">${o.customer}</div>
+        <div style="font-size:12px;color:var(--ink-soft)">${o.email}</div>
+        <div style="font-size:12px;color:var(--ink-soft)">${o.city}</div>
+      </div>
+    </div>
+    <div class="form-section">
+      <h4>Status</h4>
+      <select style="padding:14px;border:1px solid var(--line-strong);background:transparent;width:100%;font-family:inherit;font-size:14px;color:var(--ink)">
+        <option ${o.status==='pending'?'selected':''}>Pending</option>
+        <option ${o.status==='processing'?'selected':''}>Processing</option>
+        <option ${o.status==='shipped'?'selected':''}>Shipped</option>
+        <option ${o.status==='delivered'?'selected':''}>Delivered</option>
+        <option ${o.status==='cancelled'?'selected':''}>Cancelled</option>
+        <option ${o.status==='refunded'?'selected':''}>Refunded</option>
+      </select>
+    </div>
+    <div class="form-section">
+      <h4>Order timeline</h4>
+      <div style="font-size:12px;line-height:2;color:var(--ink-soft)">
+        <div>● <strong>${o.date}, 14:32</strong> — Order placed (${o.payment})</div>
+        <div>● <strong>${o.date}, 14:33</strong> — Payment captured</div>
+        <div>● <strong>${o.date}, 16:18</strong> — Picked &amp; packed</div>
+        <div>● <strong>${o.date}, 17:42</strong> — Shipped (DHL Express)</div>
+      </div>
+    </div>
+    <div class="form-section">
+      <h4>Tracking</h4>
+      <input type="text" value="DHL ${o.id}-EXP" style="padding:14px;border:1px solid var(--line-strong);background:transparent;width:100%;font-family:inherit;font-size:14px;color:var(--ink)">
+    </div>
+    <div class="form-section">
+      <h4>Internal notes</h4>
+      <textarea rows="3" style="padding:14px;border:1px solid var(--line-strong);background:transparent;width:100%;font-family:inherit;font-size:14px;color:var(--ink);resize:vertical" placeholder="Add note for the team…"></textarea>
+    </div>
+    <div class="form-section">
+      <h4>Total · ${money(o.total)}</h4>
+      <div style="font-size:12px;color:var(--ink-soft);line-height:1.8">
+        Items (${o.items}) · ${money(Math.round(o.total*0.92))}<br>
+        Shipping · ${money(o.total - Math.round(o.total*0.92))}<br>
+        <strong style="color:var(--ink)">Total · ${money(o.total)}</strong>
+      </div>
+    </div>
+  `;
+  $('#order-drawer').classList.add('open');
+}
+function closeOrderDrawer(){ $('#order-drawer').classList.remove('open'); }
+
+/* ============================================================
+   ADMIN MODULE: INVENTORY
+   ============================================================ */
+function renderInventory(){
+  const q = $('#inv-search')?.value.toLowerCase() || '';
+  const f = $('#inv-filter')?.value || '';
+  // Generate variants from PRODUCTS
+  const rows = [];
+  PRODUCTS.forEach(p => {
+    p.sizes.forEach((sz, i) => {
+      const stock = Math.max(0, Math.floor((p.stock || 20) / p.sizes.length) + (i*3 - 6));
+      rows.push({ sku: p.sku + '-' + sz, name: p.name, color: p.color, size: sz, stock, reorder: 10 });
+    });
+  });
+  const filtered = rows.filter(r => {
+    if(q && !r.sku.toLowerCase().includes(q) && !r.name.toLowerCase().includes(q)) return false;
+    if(f === 'critical' && r.stock > 5) return false;
+    if(f === 'low' && (r.stock <= 5 || r.stock > 15)) return false;
+    if(f === 'ok' && r.stock <= 15) return false;
+    return true;
+  });
+  const tbody = $('#admin-inv-tbody');
+  if(!tbody) return;
+  tbody.innerHTML = filtered.slice(0,30).map(r => `
+    <tr>
+      <td style="font-family:monospace;font-size:12px">${r.sku}</td>
+      <td style="color:var(--ink);font-weight:500">${r.name}</td>
+      <td>${r.color} · ${r.size}</td>
+      <td>${stockBar(r.stock)}</td>
+      <td>${r.reorder}</td>
+      <td><div class="row-actions"><button title="Adjust" onclick="toast('Stock adjustment saved')"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></div></td>
+    </tr>
+  `).join('');
+}
+
+/* ============================================================
+   ADMIN MODULE: CUSTOMERS
+   ============================================================ */
+const CUSTOMERS = [
+  {name:'Aria L.', email:'aria.lansing@example.com', city:'London, UK', orders:8, ltv:5240, segment:'vip', joined:'Jan 2025'},
+  {name:'Marcus T.', email:'marcus.tan@example.com', city:'Berlin, DE', orders:4, ltv:2840, segment:'repeat', joined:'Mar 2025'},
+  {name:'Sofia M.', email:'sofia.moretti@example.com', city:'Milan, IT', orders:12, ltv:8420, segment:'vip', joined:'Nov 2024'},
+  {name:'Tanaka K.', email:'tanaka.k@example.com', city:'Tokyo, JP', orders:1, ltv:298, segment:'new', joined:'May 2026'},
+  {name:'Tendai M.', email:'tendai.m@example.com', city:'Harare, ZW', orders:3, ltv:1240, segment:'repeat', joined:'Feb 2026'},
+  {name:'Élise R.', email:'elise.rousseau@example.com', city:'Paris, FR', orders:14, ltv:12480, segment:'vip', joined:'Aug 2024'},
+  {name:'Lin K.', email:'lin.k@example.com', city:'Singapore, SG', orders:6, ltv:3420, segment:'repeat', joined:'Dec 2024'},
+  {name:'Diego F.', email:'diego.f@example.com', city:'Barcelona, ES', orders:2, ltv:680, segment:'new', joined:'Apr 2026'},
+  {name:'Anna B.', email:'anna.b@example.com', city:'New York, US', orders:9, ltv:6840, segment:'vip', joined:'Sep 2024'},
+];
+function renderCustomers(){
+  const q = $('#cust-search')?.value.toLowerCase() || '';
+  const f = $('#cust-filter')?.value || '';
+  const filtered = CUSTOMERS.filter(c =>
+    (!q || c.name.toLowerCase().includes(q) || c.email.toLowerCase().includes(q)) &&
+    (!f || c.segment === f)
+  );
+  const tbody = $('#admin-cust-tbody');
+  if(!tbody) return;
+  const labels = {vip:'VIP', repeat:'Returning', new:'New'};
+  tbody.innerHTML = filtered.map(c => `
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:12px"><div class="avatar" style="width:32px;height:32px">${c.name.charAt(0)}</div><div style="color:var(--ink);font-weight:500">${c.name}</div></div></td>
+      <td>${c.email}</td>
+      <td>${c.city}</td>
+      <td>${c.orders}</td>
+      <td style="color:var(--ink);font-weight:500">${money(c.ltv)}</td>
+      <td><span class="status-pill ${c.segment==='vip'?'vip':c.segment==='repeat'?'delivered':'processing'}">${labels[c.segment]}</span></td>
+      <td><div class="row-actions">
+        <button title="View" onclick="toast('Customer profile')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button title="Email" onclick="toast('Email composed to '+'${c.email}')"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg></button>
+      </div></td>
+    </tr>
+  `).join('');
+}
+
+/* ============================================================
+   TEAM (settings page)
+   ============================================================ */
+function renderTeam(){
+  const tbody = $('#team-tbody');
+  if(!tbody) return;
+  tbody.innerHTML = ADMIN_ACCOUNTS.map((a,i) => `
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:12px"><div class="avatar" style="width:30px;height:30px">${a.name.charAt(0)}</div><div style="color:var(--ink);font-weight:500">${a.name}</div></div></td>
+      <td>${a.email}</td>
+      <td>${a.role}</td>
+      <td><span class="status-pill delivered">Enabled</span></td>
+      <td>${i===0?'Active now':'2 hr ago'}</td>
+      <td><div class="row-actions">
+        <button title="Edit"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
+        ${i===0?'':`<button class="danger" title="Remove" onclick="toast('Use Phase-2 backend for real role changes')"><svg viewBox="0 0 24 24"><path d="M3 6h18M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>`}
+      </div></td>
+    </tr>
+  `).join('');
+}
+
+/* ============================================================
+   ACTIVITY LOG
+   ============================================================ */
+function logActivity(level, who, what){
+  activityLog.unshift({ level, who, what, at: new Date() });
+  if(activityLog.length > 50) activityLog.pop();
+  renderActivityFeed();
+}
+function renderActivityFeed(){
+  const feed = $('#activity-feed');
+  if(!feed) return;
+  const items = activityLog.length === 0
+    ? [{level:'ok', who:'System', what:'No recent activity', at:new Date()}]
+    : activityLog;
+  feed.innerHTML = items.slice(0,15).map(a => `
+    <div class="activity-item">
+      <div class="activity-dot ${a.level==='ok'?'':a.level}"></div>
+      <div class="activity-content">
+        <div><span class="who">${a.who}</span> <span class="what">${a.what}</span></div>
+        <div class="when">${a.at.toLocaleString()}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
+   OVERRIDE goView so admin always goes through login gate
+   ============================================================ */
+const _origGoView = goView;
+goView = function(view, cat){
+  if(view === 'admin'){
+    location.hash = '#admin';
+    handleAdminHash();
+    return;
+  }
+  _origGoView(view, cat);
+};
+
+// Activity tracker — any click in admin resets the session timer
+document.addEventListener('click', e => {
+  if(currentAdmin && $('#view-admin').classList.contains('active') && !e.target.closest('.session-warning')){
+    resetSessionTimer();
+  }
+});
+
+/* ----------- Init ----------- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  bootHome();
+  renderCart();
+  $$('.reveal').forEach(el=>io.observe(el));
+  // Seed activity log
+  activityLog = [
+    { level:'ok',     who:'Atelier', what:'Updated product · Atelier Coat',     at:new Date(Date.now()-1000*60*5) },
+    { level:'ok',     who:'Manager', what:'Marked order #MC-10426 as shipped', at:new Date(Date.now()-1000*60*18) },
+    { level:'warn',   who:'System',  what:'Low stock · Atelier Coat · Camel',  at:new Date(Date.now()-1000*60*42) },
+    { level:'ok',     who:'Support', what:'Replied to ticket #2104',           at:new Date(Date.now()-1000*60*60) },
+    { level:'danger', who:'System',  what:'Failed login from 81.92.x.x',       at:new Date(Date.now()-1000*60*90) },
+  ];
+  // Restore admin session if present
+  const session = loadAdminState();
+  if(session && (location.hash === '#admin' || location.hash === '#admin-login')){
+    currentAdmin = session;
+    enterAdmin();
+  } else if(location.hash === '#admin' || location.hash === '#admin-login'){
+    handleAdminHash();
+  }
+  // Listen for hash changes (e.g., user types #admin into URL)
+  window.addEventListener('hashchange', () => {
+    if(location.hash === '#admin' || location.hash === '#admin-login') handleAdminHash();
+  });
+});
+
+/* keyboard escape for modals */
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    closeCart();closeAuth();closeZoom();
+    $('#mobile-menu').classList.remove('open');
+    closeProductDrawer();closeOrderDrawer();
+    $$('.popover').forEach(p => p.classList.remove('open'));
+  }
+});
+</script>
+</body>
+</html>
